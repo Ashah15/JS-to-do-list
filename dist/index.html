@@ -20,28 +20,20 @@
 		</label>
 		<label>
 			Priority
-			<input type="number" name="priority">
-		</label>
-		<label>
-			Notes
-			<textarea name="notes" cols="30" rows="10"></textarea>
-		</label>
-		<label>
-			Checklist:
-			<input type="text" name="checklist">
-		</label>
-		<label>
-			Projects:
 			<select name="priority" id="priority">
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
             </select>
 		</label>
-		<div class="cta-btns">
-                        <button class="save-btn">Save</button>
-                        <button class="cancel-btn">Cancel</button>
-
+		<label>
+			Projects:
+			<select name="project"></select>
+		</label>
+		
+        <div class="cta-btns">
+            <button class="save-btn">Save</button>
+            <button class="cancel-btn">Cancel</button>
         </div>
 	</form>
 </div>
