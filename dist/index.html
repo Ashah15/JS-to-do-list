@@ -5,9 +5,36 @@
 </head>
 <body>
 <div id="content">
-	<form action="#" id="tw">
-		<input type="datetime-local" name="date" id="date">
-		<button  id="tw-b">tw</button>
+	<form action="#" id="todo-form">
+		<label>
+			Title:
+			<input type="text" name="title">
+		</label>
+		<label>
+			Description:
+			<textarea name="description" cols="30" rows="10"></textarea>
+		</label>
+		<label>
+			Due Date/time:
+			<input type="datetime-local" name="date">
+		</label>
+		<label>
+			Priority
+			<input type="number" name="priority">
+		</label>
+		<label>
+			Notes
+			<textarea name="notes" cols="30" rows="10"></textarea>
+		</label>
+		<label>
+			Checklist:
+			<input type="text" name="checklist">
+		</label>
+		<label>
+			Projects:
+			<input type="text" name="project">
+		</label>
+		<button  id="todo-form-button">Add</button>
 	</form>
 </div>
 <script src="./main.js"></script>

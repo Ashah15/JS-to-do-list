@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Ashah15/JS-to-do-list#readme",
   "devDependencies": {
+    "css-loader": "^4.3.0",
+    "style-loader": "^1.2.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   }

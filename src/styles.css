@@ -1,0 +1,11 @@
+#todo-form,
+#todo-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#todo-form label {
+  padding: 10px 0;
+}

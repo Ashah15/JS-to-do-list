@@ -1,3 +1,4 @@
+import './styles.css';
 class TodoProject {
   constructor(name = 'Default') {
     this.name = name;
