@@ -32,9 +32,17 @@
 		</label>
 		<label>
 			Projects:
-			<select name="project"></select>
+			<select name="priority" id="priority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+            </select>
 		</label>
-		<button  id="todo-form-button">Add</button>
+		<div class="cta-btns">
+                        <button class="save-btn">Save</button>
+                        <button class="cancel-btn">Cancel</button>
+
+        </div>
 	</form>
 </div>
 <script src="./main.js"></script>
