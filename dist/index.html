@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>ToDo List</title>
-</head>
-<body>
-<div id="content">
-	<form action="#" id="todoForm">
-		<label>
-			Title:
-			<input type="text" name="title">
-		</label>
-		<label>
-			Description:
-			<textarea name="description" cols="30" rows="10"></textarea>
-		</label>
-		<label>
-			Due Date/time:
-			<input type="datetime-local" name="date">
-		</label>
-		<label>
-			Priority
-			<select name="priority" id="priority">
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
+  <head>
+    <title>ToDo List</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="left-container"></div>
+      <div class="right-container">
+        <form action="#" id="todoForm">
+          <label>
+            Title:
+            <input type="text" name="title" />
+          </label>
+          <label>
+            Description:
+            <textarea name="description" cols="30" rows="10"></textarea>
+          </label>
+          <label>
+            Due Date/time:
+            <input type="datetime-local" name="date" />
+          </label>
+          <label>
+            Priority
+            <select name="priority" id="priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
             </select>
-		</label>
-		<label>
-			Projects:
-			<select name="project"></select>
-		</label>
-		
-        <div class="cta-btns">
+          </label>
+          <label>
+            Projects:
+            <select name="project"></select>
+          </label>
+
+          <div class="cta-btns">
             <button class="save-btn">Save</button>
             <button class="cancel-btn">Cancel</button>
-        </div>
-	</form>
-</div>
-<script src="./main.js"></script>
-</body>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
 </html>
