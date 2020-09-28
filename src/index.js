@@ -1,7 +1,10 @@
 import './styles.css';
+
+let projects = [];
 class TodoProject {
   constructor(name = 'Default') {
     this.name = name;
+    projects.push(name);
   }
 }
 class TodoItem {
@@ -11,7 +14,7 @@ class TodoItem {
     priority = '5',
     notes = '',
     checklist = '',
-    project = new TodoProject()) {
+    project = projects[0]) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
@@ -29,4 +32,11 @@ class TodoItem {
 //   // e.
 // })
 let itemOne = new TodoItem('My work', 'na', new Date('2020-10-25T21:00'), '1', 'na', 'na');
-console.log(itemOne)
+console.log(itemOne);
+
+window.onload = () => {
+  const defaultProject = new TodoProject();
+  let formProject = document.forms.todoForm.project;
+  formProject.innerHTML = `<option value=${projects[0]}>${projects[0]}</option>`;
+  console.log(formProject)
+}
