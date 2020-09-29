@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ToDo List</title>
-</head>
-<body>
-<div id="content">
-	<div class="left-container"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
+    <title>ToDo List</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="left-container">
+        <h1 class="logo">ToDo List</h1>
+      </div>
       <div class="right-container">
-	<form action="#" id="todoForm">
-		<label>
-			Title:
-			<input type="text" name="title">
-		</label>
-		<label>
-			Description:
-			<textarea name="description" cols="30" rows="10"></textarea>
-		</label>
-		<label>
-			Due Date/time:
-			<input type="datetime-local" name="date">
-		</label>
-		<label>
-			Priority
-			<select name="priority" id="priority">
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
+        <form action="#" id="todoForm">
+          <label>
+            Title:
+            <input type="text" name="title" />
+          </label>
+          <label>
+            Description:
+            <textarea name="description" cols="30" rows="10"></textarea>
+          </label>
+          <label>
+            Due Date/time:
+            <input type="datetime-local" name="date" />
+          </label>
+          <label>
+            Priority
+            <select name="priority" id="priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
             </select>
           </label>
           <label>
