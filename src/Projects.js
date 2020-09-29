@@ -61,10 +61,10 @@ const Projects = () => {
   };
 
   const addToProjectList = () => {
-    const newProjectName = document.querySelector('#addProject').value;
+    const newProjectName = document.querySelector('#addTask').value;
     const lastElement = projectList.length + 1;
     const projectInstance = new Projects(newProjectName, lastElement);
-
+    console.log (projectInstance);
     projectList.push(projectInstance);
   };
 
