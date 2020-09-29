@@ -1,4 +1,5 @@
 import { projectList, projectOptions } from './dom-change';
+import Projects from './Projects';
 import './styles.css';
 
 let projects = [];
