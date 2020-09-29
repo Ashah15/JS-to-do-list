@@ -9,3 +9,17 @@
 #todoForm label {
   padding: 10px 0;
 }
+
+#content {
+  display: flex;
+  min-height: 100vh;
+}
+
+.left-container {
+  width: 30%;
+  background-color: antiquewhite;
+}
+
+.right-container {
+  width: 70%;
+}
