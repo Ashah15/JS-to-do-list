@@ -25,13 +25,6 @@ class TodoItem {
     this.project = project;
   }
 }
-// document.getElementById('tw-b').addEventListener('click', (e) => {
-//   var formEl = document.forms.tw;
-//   var formData = new FormData(formEl);
-//   var date = formData.get('date');
-//   console.log(date)
-//   // e.
-// })
 
 let itemOne = new TodoItem('My work', 'na', new Date('2020-10-25T21:00'), '1', 'na', 'na');
 console.log(itemOne);
@@ -41,4 +34,10 @@ window.onload = () => {
   new TodoProject('Yay')
   projectOptions(projects);
   projectList(projects);
+  document.querySelector('.form-container').addEventListener('click',(e)=>{
+    if(e.path[0].classList[0] == 'form-container'){
+      document.querySelector('.form-container').classList.add('d-none');
+    }
+  });
+
 }

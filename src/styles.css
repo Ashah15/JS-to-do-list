@@ -10,6 +10,24 @@
   font-family: 'Oleo Script', cursive;
   font-size: 3rem;
 }
+
+.form-container {
+  width: 100%;
+  position: absolute;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.514);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#todoForm  {
+  position: relative;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+}
+
 #todoForm,
 #todoForm label {
   display: flex;
@@ -22,6 +40,10 @@
   padding: 10px 0;
 }
 
+.cta-btns {
+  margin-top: 20px;
+}
+
 #content {
   display: flex;
   min-height: 100vh;
@@ -30,6 +52,10 @@
 .left-container {
   width: 30%;
   background-color: antiquewhite;
+}
+
+.left-container,
+.right-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,3 +82,8 @@
 .right-container {
   width: 70%;
 }
+
+.d-none {
+  display: none;
+}
+
