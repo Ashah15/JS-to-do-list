@@ -13,6 +13,9 @@ class TodoProject {
   }
 }
 const Projects = () => {
+  const getList = () => {
+    return projectList;
+  }
   const insertProject = (projectName) => {
     new TodoProject(projectName)
     projectListNav(projectList);
@@ -92,7 +95,7 @@ const Projects = () => {
     document.forms.projectForm.reset();
   };
 
-  return { addProject, createFunction };
+  return { getList, insertProject, addProject, createFunction };
 };
 
 export default Projects;

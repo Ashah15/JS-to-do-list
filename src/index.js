@@ -1,14 +1,10 @@
-import { projectListNav, projectOptions } from './dom-change';
+import { addListeners, projectListNav, projectOptions } from './dom-change';
 import Projects from './Projects';
 import './styles.css';
 
-let projects = [];
-class TodoProject {
-  constructor(name = 'Default') {
-    this.name = name;
-    projects.push(name);
-  }
-}
+let importedProject = Projects();
+let projects = importedProject.getList();
+
 class TodoItem {
   constructor(title,
     description,
@@ -27,31 +23,16 @@ class TodoItem {
   }
 }
 
-let itemOne = new TodoItem('My work', 'na', new Date('2020-10-25T21:00'), '1', 'na', 'na');
-console.log(itemOne);
-
 window.onload = () => {
-  const defaultProject = new TodoProject();
-  new TodoProject('Yay')
+  if(importedProject.getList().length == 0){
+    importedProject.insertProject('Default');
+  }else {
+    console.log(importedProject.getList())
+  }
+
   projectOptions(projects);
   projectListNav(projects);
-  document.getElementById('formToggle').addEventListener('click', (e)=> {
-    document.querySelector('.form-container').classList.remove('d-none');
-  });
-  document.querySelector('.form-container').addEventListener('click',(e)=>{
-    if(e.path[0].classList[0] == 'form-container'){
-      document.querySelector('.form-container').classList.add('d-none');
-    }
-  });
-  let p = Projects();
-  p.addProject();
-  document.getElementById('projectToggle').addEventListener('click', (e)=> {
-    document.querySelector('.project-module').classList.remove('d-none');
-  });
-  document.querySelector('.project-module').addEventListener('click',(e)=>{
-    if(e.path[0].classList[0] == 'project-module'){
-      document.querySelector('.project-module').classList.add('d-none');
-    }
-  });
+  importedProject.addProject();
+  addListeners();
 
 }

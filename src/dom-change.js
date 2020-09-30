@@ -15,5 +15,24 @@ module.exports = {
       projectOptions += `<option value="${val}">${val}</option>`;
     })
     formProject.innerHTML = projectOptions;
-  }
+  },
+  addListeners: () => {
+    document.getElementById('formToggle').addEventListener('click', (e)=> {
+    document.querySelector('.form-container').classList.remove('d-none');
+  });
+  document.querySelector('.form-container').addEventListener('click',(e)=>{
+    if(e.path[0].classList[0] == 'form-container'){
+      document.querySelector('.form-container').classList.add('d-none');
+    }
+  });
+ 
+  document.getElementById('projectToggle').addEventListener('click', (e)=> {
+    document.querySelector('.project-module').classList.remove('d-none');
+  });
+  document.querySelector('.project-module').addEventListener('click',(e)=>{
+    if(e.path[0].classList[0] == 'project-module'){
+      document.querySelector('.project-module').classList.add('d-none');
+    }
+  });
+  },
 }
