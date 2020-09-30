@@ -94,6 +94,18 @@
   display: none;
 }
 
+.toggle > * {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: antiquewhite;
+  cursor: pointer;
+}
+
+#projectToggle {
+  margin-right: 5rem;
+
+}
+
 /* .card.project-module {
 
 } */
