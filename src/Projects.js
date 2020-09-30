@@ -13,6 +13,11 @@ class TodoProject {
   }
 }
 const Projects = () => {
+  const insertProject = (projectName) => {
+    new TodoProject(projectName)
+    projectListNav(projectList);
+    projectOptions(projectList);
+  }
   const createFunction = () => {
     const ProjectsDiv = document.createElement('div');
     projectsDiv.setAttribute('class', 'projects mr-3');
@@ -82,11 +87,9 @@ const Projects = () => {
   const addToProjectList = (e) => {
     e.preventDefault();
     const newProjectName = document.querySelector('#addproject').value;
-    const projectInstance = new TodoProject(newProjectName);
+    insertProject(newProjectName);
     document.querySelector('.project-module').classList.add('d-none');
     document.forms.projectForm.reset();
-    projectListNav(projectList);
-    projectOptions(projectList);
   };
 
   return { addProject, createFunction };
