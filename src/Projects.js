@@ -1,11 +1,17 @@
 
 
 
-function projects(name, value) {
-  this.name = name;
-  this.value = value;
+/// function projects(name, value) {
+//   this.name = name;
+//   this.value = value;
+// }
+let projectList = []
+class TodoProject {
+  constructor(name = 'Default') {
+    this.name = name;
+    projectList.push(name);
+  }
 }
-
 const Projects = () => {
   const createFunction = () => {
     const ProjectsDiv = document.createElement('div');
@@ -22,7 +28,7 @@ const Projects = () => {
 
       projectSection.appendChild(projectName);
       projectSection.appendChild(projectValue);
-      allProjectsDiv.appendChild(projectSection);
+      ProjectsDiv.appendChild(projectSection);
 
       const detailsProjectButton = document.createElement('button');
       detailsProjectButton.innerHTML = 'View Details';
@@ -40,35 +46,33 @@ const Projects = () => {
     document.querySelector('.all-content').appendChild(ProjectsDiv);
   };
 
-  const addTask = () => {
-    const taskCard = document.createElement('div');
-    taskCard.setAttribute('class', 'card task-module');
+  const addProject = () => {
+    const projectCard = document.createElement('div');
+    projectCard.setAttribute('class', 'card project-module');
 
-    const taskInput = document.createElement('input');
-    taskInput.type = 'text';
-    taskInput.setAttribute('placeholder', 'Add new task');
-    taskInput.setAttribute('id', 'addtask');
+    const projectInput = document.createElement('input');
+    projectInput.type = 'text';
+    projectInput.setAttribute('placeholder', 'Add new project');
+    projectInput.setAttribute('id', 'addproject');
 
-    const submitTaskButton = document.createElement('button');
-    submitTaskButton.setAttribute('class', 'btn btn-success');
-    submitTaskButton.innerHTML = 'Submit';
+    const submitProjectButton = document.createElement('button');
+    submitProjectButton.setAttribute('class', 'btn btn-success save-btn');
+    submitProjectButton.innerHTML = 'Submit';
 
-    submitTaskButton.addEventListener('click', addToProjectList);
+    submitProjectButton.addEventListener('click', addToProjectList);
 
-    taskCard.appendChild(taskInput);
-    taskCard.appendChild(submitTaskButton);
-    document.body.appendChild(taskCard);
+    projectCard.appendChild(projectInput);
+    projectCard.appendChild(submitProjectButton);
+    document.body.appendChild(projectCard);
   };
 
   const addToProjectList = () => {
-    const newProjectName = document.querySelector('#addTask').value;
-    const lastElement = projectList.length + 1;
-    const projectInstance = new Projects(newProjectName, lastElement);
+    const newProjectName = document.querySelector('#addproject').value;
+    const projectInstance = new TodoProject(newProjectName);
     console.log (projectInstance);
-    projectList.push(projectInstance);
   };
 
-  return { addTask, createFunction };
+  return { addProject, createFunction };
 };
 
 export default Projects;

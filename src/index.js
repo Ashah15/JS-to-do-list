@@ -35,10 +35,15 @@ window.onload = () => {
   new TodoProject('Yay')
   projectOptions(projects);
   projectList(projects);
+  document.getElementById('formToggle').addEventListener('click', (e)=> {
+    document.querySelector('.form-container').classList.remove('d-none');
+  });
   document.querySelector('.form-container').addEventListener('click',(e)=>{
     if(e.path[0].classList[0] == 'form-container'){
       document.querySelector('.form-container').classList.add('d-none');
     }
   });
+  let p = Projects();
+  p.addProject();
 
 }
