@@ -84,7 +84,9 @@ const Projects = () => {
     const newProjectName = document.querySelector('#addproject').value;
     const projectInstance = new TodoProject(newProjectName);
     document.querySelector('.project-module').classList.add('d-none');
+    document.forms.projectForm.reset();
     projectListNav(projectList);
+    projectOptions(projectList);
   };
 
   return { addProject, createFunction };

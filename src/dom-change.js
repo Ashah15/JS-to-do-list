@@ -12,10 +12,8 @@ module.exports = {
     let formProject = document.forms.todoForm.project;
     let projectOptions = '';
     projects.forEach((val, i) => {
-      let option = formProject.appendChild(document.createElement('option'))
-      option.value = val;
-      option.innerHTML = val;
-      projectOptions += option;
+      projectOptions += `<option value="${val}">${val}</option>`;
     })
+    formProject.innerHTML = projectOptions;
   }
 }
