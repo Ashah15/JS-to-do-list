@@ -45,5 +45,13 @@ window.onload = () => {
   });
   let p = Projects();
   p.addProject();
+  document.getElementById('projectToggle').addEventListener('click', (e)=> {
+    document.querySelector('.project-module').classList.remove('d-none');
+  });
+  document.querySelector('.project-module').addEventListener('click',(e)=>{
+    if(e.path[0].classList[0] == 'project-module'){
+      document.querySelector('.project-module').classList.add('d-none');
+    }
+  });
 
 }

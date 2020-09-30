@@ -11,7 +11,8 @@
   font-size: 3rem;
 }
 
-.form-container {
+.form-container,
+.project-module {
   width: 100%;
   position: absolute;
   height: 100vh;
@@ -19,9 +20,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 0;
+  left: 0;
 }
 
-#todoForm  {
+#todoForm,
+#projectForm  {
   position: relative;
   background-color: #fff;
   padding: 30px;
@@ -29,14 +33,17 @@
 }
 
 #todoForm,
-#todoForm label {
+#todoForm label,
+#projectForm,
+#projectForm label {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
 }
 
-#todoForm label {
+#todoForm label,
+#projectForm label {
   padding: 10px 0;
 }
 
@@ -87,3 +94,6 @@
   display: none;
 }
 
+/* .card.project-module {
+
+} */

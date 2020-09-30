@@ -48,8 +48,14 @@ const Projects = () => {
 
   const addProject = () => {
     const projectCard = document.createElement('div');
-    projectCard.setAttribute('class', 'card project-module');
-
+    projectCard.setAttribute('class', 'project-module card d-none');
+    const projectForm = document.createElement('form');
+    projectForm.id = 'projectForm';
+    const projectFormH2 = document.createElement('h2');
+    const projectFormTitle = document.createTextNode('Enter the Project Name:');
+    projectFormH2.appendChild(projectFormTitle)
+    projectForm.appendChild(projectFormH2);
+    const projectLabel = document.createElement('label');
     const projectInput = document.createElement('input');
     projectInput.type = 'text';
     projectInput.setAttribute('placeholder', 'Add new project');
@@ -60,10 +66,11 @@ const Projects = () => {
     submitProjectButton.innerHTML = 'Submit';
 
     submitProjectButton.addEventListener('click', addToProjectList);
-
-    projectCard.appendChild(projectInput);
-    projectCard.appendChild(submitProjectButton);
-    document.body.appendChild(projectCard);
+    projectLabel.appendChild(projectInput);
+    projectForm.appendChild(projectLabel);
+    projectForm.appendChild(submitProjectButton);
+    projectCard.appendChild(projectForm);
+    document.querySelector('#content').appendChild(projectCard);
   };
 
   const addToProjectList = () => {
