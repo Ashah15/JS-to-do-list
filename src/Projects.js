@@ -1,4 +1,4 @@
-
+import { projectListNav, projectOptions } from './dom-change';
 
 
 /// function projects(name, value) {
@@ -65,18 +65,26 @@ const Projects = () => {
     submitProjectButton.setAttribute('class', 'btn btn-success save-btn');
     submitProjectButton.innerHTML = 'Submit';
 
+    const cancelProjectButton = document.createElement('button');
+    cancelProjectButton.setAttribute('class', 'btn btn-success cancel-btn');
+    cancelProjectButton.innerHTML = 'Cancel';
+
     submitProjectButton.addEventListener('click', addToProjectList);
+    cancelProjectButton.addEventListener('click', () => {document.querySelector('.project-module').classList.add('d-none');})
     projectLabel.appendChild(projectInput);
     projectForm.appendChild(projectLabel);
     projectForm.appendChild(submitProjectButton);
+    projectForm.appendChild(cancelProjectButton);
     projectCard.appendChild(projectForm);
     document.querySelector('#content').appendChild(projectCard);
   };
 
-  const addToProjectList = () => {
+  const addToProjectList = (e) => {
+    e.preventDefault();
     const newProjectName = document.querySelector('#addproject').value;
     const projectInstance = new TodoProject(newProjectName);
-    console.log (projectInstance);
+    document.querySelector('.project-module').classList.add('d-none');
+    projectListNav(projectList);
   };
 
   return { addProject, createFunction };

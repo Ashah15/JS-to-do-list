@@ -1,4 +1,4 @@
-import { projectList, projectOptions } from './dom-change';
+import { projectListNav, projectOptions } from './dom-change';
 import Projects from './Projects';
 import './styles.css';
 
@@ -34,7 +34,7 @@ window.onload = () => {
   const defaultProject = new TodoProject();
   new TodoProject('Yay')
   projectOptions(projects);
-  projectList(projects);
+  projectListNav(projects);
   document.getElementById('formToggle').addEventListener('click', (e)=> {
     document.querySelector('.form-container').classList.remove('d-none');
   });
