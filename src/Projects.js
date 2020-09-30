@@ -1,10 +1,12 @@
 import { projectListNav, projectOptions } from './dom-change';
+import localDB from './local-storage' 
 
 
 /// function projects(name, value) {
 //   this.name = name;
 //   this.value = value;
 // }
+
 let projectList = []
 class TodoProject {
   constructor(name = 'Default') {

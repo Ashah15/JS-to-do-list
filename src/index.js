@@ -1,7 +1,9 @@
 import { addListeners, projectListNav, projectOptions } from './dom-change';
 import Projects from './Projects';
 import './styles.css';
+import localDB from './local-storage';
 
+let ldb = localDB();
 let importedProject = Projects();
 
 class TodoItem {
