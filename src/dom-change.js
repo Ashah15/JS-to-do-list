@@ -6,7 +6,7 @@ module.exports = {
     <div class="project"><a href="#">${val}</a></div>
     `
     });
-    document.querySelector('.projects').innerHTML = project
+    document.querySelector('.projects').innerHTML = project;
   },
   projectOptions: (projects)=> {
     let formProject = document.forms.todoForm.project;

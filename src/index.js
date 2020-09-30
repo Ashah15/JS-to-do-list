@@ -3,7 +3,6 @@ import Projects from './Projects';
 import './styles.css';
 
 let importedProject = Projects();
-let projects = importedProject.getList();
 
 class TodoItem {
   constructor(title,
@@ -24,10 +23,9 @@ class TodoItem {
 }
 
 window.onload = () => {
+  let projects = importedProject.getList();
   if(importedProject.getList().length == 0){
     importedProject.insertProject('Default');
-  }else {
-    console.log(importedProject.getList())
   }
 
   projectOptions(projects);
