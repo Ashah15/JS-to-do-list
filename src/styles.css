@@ -3,6 +3,7 @@
 *::before {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 .logo {
@@ -137,6 +138,10 @@
 
 .d-none {
   display: none;
+}
+
+.v-hidden {
+  visibility: hidden;
 }
 
 .toggle > * {

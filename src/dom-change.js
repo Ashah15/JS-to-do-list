@@ -6,6 +6,9 @@ module.exports = {
     <li class="project"><h4>${val}</h4><span class="project-nav-options">&raquo;</span></li>
     `
     });
+    project += `
+    <li class="all-project project" data-info="all-projects"><h4>View All Projects</h4></li>
+    `
     document.querySelector('.projects').innerHTML = project;
   },
   projectOptions: (projects)=> {
