@@ -21,7 +21,7 @@ module.exports = {
     document.querySelector('.form-container').classList.remove('d-none');
   });
   document.querySelector('.form-container').addEventListener('click',(e)=>{
-    if(e.path[0].classList[0] == 'form-container'){
+    if(e.target.classList[0] == 'form-container'){
       document.querySelector('.form-container').classList.add('d-none');
     }
   });
@@ -30,7 +30,7 @@ module.exports = {
     document.querySelector('.project-module').classList.remove('d-none');
   });
   document.querySelector('.project-module').addEventListener('click',(e)=>{
-    if(e.path[0].classList[0] == 'project-module'){
+    if(e.target.classList[0] == 'project-module'){
       document.querySelector('.project-module').classList.add('d-none');
     }
   });
