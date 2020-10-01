@@ -73,6 +73,8 @@ const Projects = () => {
     projectInput.type = 'text';
     projectInput.setAttribute('placeholder', 'Add new project');
     projectInput.setAttribute('id', 'addproject');
+    projectInput.setAttribute('minlength', '3');
+    projectInput.required = true;
 
     const submitProjectButton = document.createElement('button');
     submitProjectButton.setAttribute('class', 'btn btn-success save-btn');
@@ -83,7 +85,9 @@ const Projects = () => {
     cancelProjectButton.innerHTML = 'Cancel';
 
     submitProjectButton.addEventListener('click', addToProjectList);
-    cancelProjectButton.addEventListener('click', () => {document.querySelector('.project-module').classList.add('d-none');})
+    cancelProjectButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('.project-module').classList.add('d-none');})
     projectLabel.appendChild(projectInput);
     projectForm.appendChild(projectLabel);
     projectForm.appendChild(submitProjectButton);
@@ -93,12 +97,13 @@ const Projects = () => {
   };
 
   const addToProjectList = (e) => {
-    console.log(projectList)
     e.preventDefault();
-    const newProjectName = document.querySelector('#addproject').value;
-    insertProject(newProjectName);
-    document.querySelector('.project-module').classList.add('d-none');
-    document.forms.projectForm.reset();
+    if(document.forms.projectForm.reportValidity()){
+      const newProjectName = document.querySelector('#addproject').value;
+      insertProject(newProjectName);
+      document.querySelector('.project-module').classList.add('d-none');
+      document.forms.projectForm.reset();
+    }
   };
 
   return { getList, insertProject, addProject, createFunction };
