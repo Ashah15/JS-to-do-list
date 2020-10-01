@@ -1,5 +1,7 @@
 import { projectListNav, projectOptions } from './dom-change';
-import localDB from './local-storage' 
+import localDB from './local-storage';
+
+let ldb = localDB();
 
 
 /// function projects(name, value) {
@@ -7,11 +9,12 @@ import localDB from './local-storage'
 //   this.value = value;
 // }
 
-let projectList = []
+let projectList = ldb.getAr('projectList') == null ? ['Default'] : ldb.getAr('projectList');
 class TodoProject {
   constructor(name = 'Default') {
     this.name = name;
     projectList.push(name);
+    ldb.setAr('projectList',projectList);
   }
 }
 const Projects = () => {
@@ -90,6 +93,7 @@ const Projects = () => {
   };
 
   const addToProjectList = (e) => {
+    console.log(projectList)
     e.preventDefault();
     const newProjectName = document.querySelector('#addproject').value;
     insertProject(newProjectName);
