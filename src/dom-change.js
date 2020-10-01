@@ -3,7 +3,7 @@ module.exports = {
     let project = '';
     projects.forEach((val) => {
       project += `
-    <div class="project"><a href="#">${val}</a></div>
+    <li class="project"><h4>${val}</h4><span class="project-nav-options">&raquo;</span></li>
     `
     });
     document.querySelector('.projects').innerHTML = project;
