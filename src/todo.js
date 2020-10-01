@@ -65,6 +65,23 @@ const toDoPage = () => {
           todoSection.appendChild(toDoSectionPrority);
         }
 
+        const toDoObject = toDoList[i];
+
+        const editIcon = document.createElement('i');
+        editIcon.setAttribute('class', 'fas fa-edit');
+
+        const deleteIcon = document.createElement('i');
+        deleteIcon.setAttribute('class', 'fas fa-trash-alt');
+
+        todoSection.appendChild(editIcon);
+        todoSection.appendChild(deleteIcon);
+
+        toDoDiv.appendChild(todoSection);
+
+        toDoSectionMainDiv.appendChild(todoSection);
+      }
+    }
+
 
 
 
