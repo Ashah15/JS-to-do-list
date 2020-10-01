@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap"
+      rel="stylesheet"
+    />
+    <title>ToDo List</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
-	<title>ToDo List</title>
-</head>
-
-<body>
-	<div id="content">
-		<div class="left-container">
-			<h1 class="logo">ToDo List</h1>
-			<div class="left-section">
-				<nav>
-					<h2>Projects</h2>
-					<ul class="projects"></ul>
-				</nav>
-			</div>
-		</div>
-		<div class="right-container">
-			<div class="toggle">
-				<button id="projectToggle">Create New Project</button>
-        <button id="formToggle">Create New Task</button>
+  <body>
+    <div id="content">
+      <div class="left-container">
+        <h1 class="logo">ToDo List</h1>
+        <div class="left-section">
+          <nav>
+            <h2>Projects</h2>
+            <ul class="projects"></ul>
+          </nav>
+        </div>
+      </div>
+      <div class="right-container">
+        <div class="toggle">
+          <button id="projectToggle">Create New Project</button>
+          <button id="formToggle">Create New Task</button>
+        </div>
+        <div class="right-info">
+          <div class="right-section"></div>
+          <div class="right-section v-hidden"></div>
         </div>
       </div>
       <div class="form-container d-none">
@@ -53,7 +59,7 @@
             Projects:
             <select name="project"></select>
           </label>
-  
+
           <div class="cta-btns">
             <button class="save-btn">Save</button>
             <button class="cancel-btn">Cancel</button>
