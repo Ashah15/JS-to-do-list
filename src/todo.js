@@ -17,7 +17,7 @@ const toDoPage = () => {
     const toDoDiv = document.createElement('div');
     toDoDiv.setAttribute('class', 'main-div');
 
-    document.querySelector('.content').appendChild(toDoDiv);
+    document.querySelector('.all-content').appendChild(toDoDiv);
 
     const toDoProjectTitle = document.createElement('h1');
     toDoProjectTitle.innerHTML = name;
