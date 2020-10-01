@@ -78,6 +78,28 @@
   text-align: center;
 }
 
+.right-container .right-info {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  width: 100%;
+  min-height: 80%;
+}
+
+.right-info .right-section {
+  background-color: antiquewhite;
+  min-width: 300px;
+  max-width: 500px;
+  width: 100%;
+  min-height: 400px;
+  margin: 10%;
+  border-radius: 10px;
+}
+
+.right-section:last-child {
+  margin-left: 0;
+}
+
 .projects .project {
   padding: 12px 0;
   display: flex;
@@ -128,6 +150,4 @@
   margin-right: 5rem;
 }
 
-/* .card.project-module {
 
-} */
