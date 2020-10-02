@@ -4,6 +4,7 @@ import './styles.css';
 import toDoPage from './todo.js';
 
 const importedProject = Projects();
+const importedtoDoPage = toDoPage();
 
 window.onload = () => {
   const projects = importedProject.getList();
@@ -11,4 +12,5 @@ window.onload = () => {
   domchange.projectListNav(projects);
   importedProject.addProject();
   domchange.addListeners();
+  importedtoDoPage.displayToDo();
 };

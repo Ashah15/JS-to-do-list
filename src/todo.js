@@ -1,6 +1,8 @@
 import domchange from './dom-change';
 import localDB from './local-storage';
 
+const ldb = localDB();
+
 class TodoItem {
   constructor(title,
     description,
@@ -16,7 +18,7 @@ class TodoItem {
 }
 
 const toDoPage = () => {
-  const displayToDo = (name, value) => {
+  const displayToDo = (name, value, x) => {
     const toDoDiv = document.createElement('div');
     toDoDiv.setAttribute('class', 'main-div');
 
@@ -28,7 +30,7 @@ const toDoPage = () => {
     const addToDoButton = document.createElement('button');
     addToDoButton.innerHTML = 'Add New Task';
     addToDoButton.setAttribute('class', 'btn btn-primary todo-button');
-    
+
     toDoDiv.appendChild(toDoProjectTitle);
     toDoDiv.appendChild(addToDoButton);
 
@@ -68,7 +70,7 @@ const toDoPage = () => {
           todoSection.appendChild(toDoSectionPriority);
         }
 
-        const toDoObject = toDoList[i];
+        // const toDoObject = toDoList[i];
 
         const editIcon = document.createElement('i');
         editIcon.setAttribute('class', 'fas fa-edit');
@@ -90,32 +92,29 @@ const toDoPage = () => {
     });
   };
 
-    submitToDoButton.addEventListener('click', () => {
-      if (toDoList.indexOf(toDoList[x]) !== -1) {
-        const newtoDoTitle = document.getElementById('title-id').value;
-        const newtoDoDescription = document.getElementById('description-id').value;
-        const newtoDoDueDate = document.getElementById('dueDate-id').value;
-        const newtoDoPriority = document.getElementById('priority-id');
+  submitToDoButton.addEventListener('click', () => {
+    if (toDoList.indexOf(toDoList[x]) !== -1) {
+      const newtoDoTitle = document.getElementById('title-id').value;
+      const newtoDoDescription = document.getElementById('description-id').value;
+      const newtoDoDueDate = document.getElementById('dueDate-id').value;
+      const newtoDoPriority = document.getElementById('priority-id');
 
-        const newUserPriority = newtoDoPriority.options[newtoDoPriority.selectedIndex].text;
+      const newUserPriority = newtoDoPriority.options[newtoDoPriority.selectedIndex].text;
 
-        if (newtoDoTitle && newtoDoDescription && newtoDoDueDate) {
-          toDoList[x].title = newtoDoTitle;
-          toDoList[x].description = newtoDoDescription;
-          toDoList[x].duedate = newtoDoDueDate;
-          toDoList[x].priority = newUserPriority;
-        }
-
-      } else {
-        document.getElementById('todoDoForm').classList.add('hide-toDo-form-first');
-        document.querySelector('.main-todo-div').classList.add('hide-toDo-form-first');
+      if (newtoDoTitle && newtoDoDescription && newtoDoDueDate) {
+        toDoList[x].title = newtoDoTitle;
+        toDoList[x].description = newtoDoDescription;
+        toDoList[x].duedate = newtoDoDueDate;
+        toDoList[x].priority = newUserPriority;
       }
-    });
-  
+    } else {
+      document.getElementById('todoDoForm').classList.add('hide-toDo-form-first');
+      document.querySelector('.main-todo-div').classList.add('hide-toDo-form-first');
+    }
+  });
+
   return { displayToDo };
 };
 
 
-export {
-  toDoPage, TodoItem,
-};
+export default toDoPage;
