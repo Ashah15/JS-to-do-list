@@ -150,6 +150,46 @@ const toDoPage = () => {
     toDoForm.appendChild(priorityTitle);
     toDoForm.appendChild(priority);
 
+    const submitToDoButton = document.createElement('button');
+    submitToDoButton.setAttribute('class', 'btn btn-success todo-project-button hide-submit-button mt-2');
+    submitToDoButton.innerHTML = 'Submit';
+
+    toDoForm.appendChild(submitToDoButton);
+
+    document.querySelector('.all-content').appendChild(toDoForm);
+
+    submitToDoButton.addEventListener('click', () => {
+      if (toDoList.indexOf(toDoList[x]) !== -1) {
+        const newtoDoTitle = document.getElementById('title-id').value;
+        const newtoDoDescription = document.getElementById('description-id').value;
+        const newtoDoDueDate = document.getElementById('dueDate-id').value;
+        const newtoDoPriority = document.getElementById('priority-id');
+
+        const newUserPriority = newtoDoPriority.options[newtoDoPriority.selectedIndex].text;
+
+        if (newtoDoTitle && newtoDoDescription && newtoDoDueDate) {
+          toDoList[x].title = newtoDoTitle;
+          toDoList[x].description = newtoDoDescription;
+          toDoList[x].duedate = newtoDoDueDate;
+          toDoList[x].priority = newUserPriority;
+        }
+
+      } else {
+        document.getElementById('todoDoForm').classList.add('hide-toDo-form-first');
+        document.querySelector('.main-todo-div').classList.add('hide-toDo-form-first');
+      }
+    });
+  };
+
+
+  return { displayToDo, displayToDoForm };
+};
+
+
+export {
+  toDoPage, TodoItem,
+};
+
 
 
 
