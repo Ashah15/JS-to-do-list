@@ -82,10 +82,41 @@ const toDoPage = () => {
       }
     }
 
+    addToDoButton.addEventListener('click', () => {
+      displayToDoForm(name, value);
+    });
+  };
+
+  const displayToDoForm = (name, value, x) => {
+    const toDoForm = document.createElement('div');
+    toDoForm.setAttribute('class', 'card project-module');
+    toDoForm.setAttribute('id', 'todoForm');
+
+    const title = document.createElement('label');
+    title.setAttribute('class', 'nameTxt');
+    toDoForm.appendChild(title);
+    title.innerHTML = 'Title';
+
+    const titleInput = document.createElement('input');
+    titleInput.setAttribute('id', 'title-id');
+    titleInput.type = 'text';
+
+    toDoForm.appendChild(titleInput);
+
+    const description = document.createElement('label');
+    description.setAttribute('class', 'nameTxt');
+    description.innerHTML = 'Description';
+    toDoForm.appendChild(description);
+    
+    const descriptionInput = document.createElement('input');
+    descriptionInput.setAttribute('class', 'description-class');
+    descriptionInput.setAttribute('id', 'description-id');
+    descriptionInput.type = 'text';
+    toDoForm.appendChild(descriptionInput)
+
 
 
 
 
     
-  } 
-}
+} 
