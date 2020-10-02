@@ -128,6 +128,28 @@ const toDoPage = () => {
     priorityTitle.setAttribute('class', 'nameTxt');
     priorityTitle.innerHTML = 'Priority';
 
+    const priority = document.createElement('select');
+    priority.setAttribute('class', 'description-class');
+    priority.setAttribute('id', 'priority-id');
+
+    const priorityOptions = document.createElement('option-1');
+    priorityOptions.setAttribute('value', '1');
+    priority.appendChild(priorityOptions);
+    priorityOptions.innerHTML = 'High';
+
+    const priorityOptionTwo = document.createElement('option-2');
+    priorityOptionTwo.setAttribute('value', '2');
+    priority.appendChild(priorityOptionTwo);
+    priorityOptionTwo.innerHTML = 'Medium';
+
+    const priorityOptionThree = document.createElement('option-3');
+    priorityOptionThree.setAttribute('value', '3');
+    priority.appendChild(priorityOptionThree);
+    priorityOptionThree.innerHTML = 'Low';
+
+    toDoForm.appendChild(priorityTitle);
+    toDoForm.appendChild(priority);
+
 
 
 
