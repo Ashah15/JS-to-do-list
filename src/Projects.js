@@ -9,7 +9,7 @@ let ldb = localDB();
 //   this.value = value;
 // }
 
-let projectList = ldb.getAr('projectList') == null ? ['Default'] : ldb.getAr('projectList');
+let projectList;
 class TodoProject {
   constructor(name = 'Default') {
     this.name = name;
@@ -19,6 +19,7 @@ class TodoProject {
 }
 const Projects = () => {
   const getList = () => {
+    projectList = ldb.getAr('projectList') == null ? ldb.setAr('projectList', ['Default']) : ldb.getAr('projectList');
     return projectList;
   }
   const insertProject = (projectName) => {
