@@ -87,77 +87,6 @@ const toDoPage = () => {
     });
   };
 
-  const displayToDoForm = (name, value, x) => {
-    const toDoForm = document.createElement('div');
-    toDoForm.setAttribute('class', 'card project-module');
-    toDoForm.setAttribute('id', 'todoForm');
-
-    const title = document.createElement('label');
-    title.setAttribute('class', 'nameTxt');
-    toDoForm.appendChild(title);
-    title.innerHTML = 'Title';
-
-    const titleInput = document.createElement('input');
-    titleInput.setAttribute('id', 'title-id');
-    titleInput.type = 'text';
-
-    toDoForm.appendChild(titleInput);
-
-    const description = document.createElement('label');
-    description.setAttribute('class', 'nameTxt');
-    description.innerHTML = 'Description';
-    toDoForm.appendChild(description);
-
-    const descriptionInput = document.createElement('input');
-    descriptionInput.setAttribute('class', 'description-class');
-    descriptionInput.setAttribute('id', 'description-id');
-    descriptionInput.type = 'text';
-    toDoForm.appendChild(descriptionInput);
-
-    const dueDate = document.createElement('label');
-    dueDate.setAttribute('class', 'nameTxt');
-    dueDate.innerHTML = 'Due Date';
-    const dueDateInput = document.createElement('input');
-    dueDateInput.setAttribute('class', 'description-class');
-    dueDateInput.setAttribute('id', 'dueDate-id');
-    dueDateInput.type = 'date';
-    toDoForm.appendChild(dueDate);
-    toDoForm.appendChild(dueDateInput);
-
-    const priorityTitle = document.createElement('label');
-    priorityTitle.setAttribute('class', 'nameTxt');
-    priorityTitle.innerHTML = 'Priority';
-
-    const priority = document.createElement('select');
-    priority.setAttribute('class', 'description-class');
-    priority.setAttribute('id', 'priority-id');
-
-    const priorityOptions = document.createElement('option-1');
-    priorityOptions.setAttribute('value', '1');
-    priority.appendChild(priorityOptions);
-    priorityOptions.innerHTML = 'High';
-
-    const priorityOptionTwo = document.createElement('option-2');
-    priorityOptionTwo.setAttribute('value', '2');
-    priority.appendChild(priorityOptionTwo);
-    priorityOptionTwo.innerHTML = 'Medium';
-
-    const priorityOptionThree = document.createElement('option-3');
-    priorityOptionThree.setAttribute('value', '3');
-    priority.appendChild(priorityOptionThree);
-    priorityOptionThree.innerHTML = 'Low';
-
-    toDoForm.appendChild(priorityTitle);
-    toDoForm.appendChild(priority);
-
-    const submitToDoButton = document.createElement('button');
-    submitToDoButton.setAttribute('class', 'btn btn-success todo-project-button hide-submit-button mt-2');
-    submitToDoButton.innerHTML = 'Submit';
-
-    toDoForm.appendChild(submitToDoButton);
-
-    document.querySelector('.all-content').appendChild(toDoForm);
-
     submitToDoButton.addEventListener('click', () => {
       if (toDoList.indexOf(toDoList[x]) !== -1) {
         const newtoDoTitle = document.getElementById('title-id').value;
@@ -179,23 +108,11 @@ const toDoPage = () => {
         document.querySelector('.main-todo-div').classList.add('hide-toDo-form-first');
       }
     });
-  };
-
-
-  return { displayToDo, displayToDoForm };
+  
+  return { displayToDo };
 };
 
 
 export {
   toDoPage, TodoItem,
 };
-
-
-
-
-
-
-
-
-    
-} 
