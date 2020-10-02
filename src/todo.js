@@ -107,12 +107,29 @@ const toDoPage = () => {
     description.setAttribute('class', 'nameTxt');
     description.innerHTML = 'Description';
     toDoForm.appendChild(description);
-    
+
     const descriptionInput = document.createElement('input');
     descriptionInput.setAttribute('class', 'description-class');
     descriptionInput.setAttribute('id', 'description-id');
     descriptionInput.type = 'text';
-    toDoForm.appendChild(descriptionInput)
+    toDoForm.appendChild(descriptionInput);
+
+    const dueDate = document.createElement('label');
+    dueDate.setAttribute('class', 'nameTxt');
+    dueDate.innerHTML = 'Due Date';
+    const dueDateInput = document.createElement('input');
+    dueDateInput.setAttribute('class', 'description-class');
+    dueDateInput.setAttribute('id', 'dueDate-id');
+    dueDateInput.type = 'date';
+    toDoForm.appendChild(dueDate);
+    toDoForm.appendChild(dueDateInput);
+
+    const priorityTitle = document.createElement('label');
+    priorityTitle.setAttribute('class', 'nameTxt');
+    priorityTitle.innerHTML = 'Priority';
+
+
+
 
 
 
