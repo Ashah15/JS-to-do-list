@@ -1,14 +1,14 @@
-import { addListeners, projectListNav, projectOptions } from './dom-change';
+import domchange from './dom-change';
 import Projects from './Projects';
 import './styles.css';
 
-let importedProject = Projects();
+const importedProject = Projects();
 
 window.onload = () => {
-  let projects = importedProject.getList();
-  projectOptions(projects);
-  projectListNav(projects);
+  // console.log(Projects().getList())
+  const projects = importedProject.getList();
+  domchange.projectOptions(projects);
+  domchange.projectListNav(projects);
   importedProject.addProject();
-  addListeners();
-
-}
+  domchange.addListeners();
+};
