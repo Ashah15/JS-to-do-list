@@ -49,20 +49,20 @@ const toDoPage = () => {
         todoSection.appendChild(toDoDate);
 
         if (toDoList[i].priority === 'High') {
-          const toDoSectionPrority = document.createElement('p');
-          toDoSectionPrority.setAttribute('class', 'high-priority');
-          toDoSectionPrority.innerHTML = toDoList[i].priority;
-          todoSection.appendChild(toDoSectionPrority);
+          const toDoSectionPriority = document.createElement('p');
+          toDoSectionPriority.setAttribute('class', 'high-priority');
+          toDoSectionPriority.innerHTML = toDoList[i].priority;
+          todoSection.appendChild(toDoSectionPriority);
         } else if (toDoList[i].priority === 'Medium') {
-          const toDoSectionPrority = document.createElement('p');
-          toDoSectionPrority.setAttribute('class', 'medium-priority');
-          toDoSectionPrority.innerHTML = toDoList[i].priority;
-          todoSection.appendChild(toDoSectionPrority);
+          const toDoSectionPriority = document.createElement('p');
+          toDoSectionPriority.setAttribute('class', 'medium-priority');
+          toDoSectionPriority.innerHTML = toDoList[i].priority;
+          todoSection.appendChild(toDoSectionPriority);
         } else if (toDoList[i].priority === 'Low') {
-          const toDoSectionPrority = document.createElement('p');
-          toDoSectionPrority.setAttribute('class', 'low-priority');
-          toDoSectionPrority.innerHTML = toDoList[i].priority;
-          todoSection.appendChild(toDoSectionPrority);
+          const toDoSectionPriority = document.createElement('p');
+          toDoSectionPriority.setAttribute('class', 'low-priority');
+          toDoSectionPriority.innerHTML = toDoList[i].priority;
+          todoSection.appendChild(toDoSectionPriority);
         }
 
         const toDoObject = toDoList[i];
