@@ -114,6 +114,7 @@
 }
 
 .projects .project:hover,
+.projects .project[active],
 #formToggle:hover,
 #projectToggle:hover {
   background-color: #6a2c70;
@@ -121,6 +122,8 @@
 
 .projects .project:hover h4,
 .projects .project:hover span,
+.projects .project[active] h4,
+.projects .project[active] span,
 #formToggle:hover,
 #projectToggle:hover {
   color: antiquewhite;
