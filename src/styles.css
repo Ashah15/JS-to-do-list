@@ -120,6 +120,12 @@
   background-color: #6a2c70;
 }
 
+.projects .project h4 {
+  color: #6a2c70;
+  font-weight: 400;
+  padding-right: 10px
+}
+
 .projects .project:hover h4,
 .projects .project:hover span,
 .projects .project[active] h4,
@@ -127,12 +133,6 @@
 #formToggle:hover,
 #projectToggle:hover {
   color: antiquewhite;
-}
-
-.projects .project h4 {
-  color: #6a2c70;
-  font-weight: 400;
-  padding-right: 10px
 }
 
 .right-container {

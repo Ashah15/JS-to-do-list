@@ -5,11 +5,11 @@ let self = module.exports = {
     let project = '';
     projects.forEach((val) => {
       project += `
-    <li class="project"><h4 data-info="${val}">${val}</h4><span class="project-nav-options">&raquo;</span></li>
+    <li class="project" data-info="${val}"><h4>${val}</h4><span class="project-nav-options">&raquo;</span></li>
     `
     });
     project += `
-    <li class="all-project project"><h4 data-info="all-projects">View All Projects</h4></li>
+    <li class="all-project project" data-info="all-projects"><h4>View All Projects</h4></li>
     `
     document.querySelector('.projects').innerHTML = project;
   },
@@ -37,7 +37,6 @@ let self = module.exports = {
       currentActive.removeAttribute('active');
       node.setAttribute('active', '');
     }else {
-      console.log(node)
       node.setAttribute('active', '');
     }
   },
@@ -60,14 +59,15 @@ let self = module.exports = {
     }
   });
 
-  let allProjects = document.querySelectorAll('.projects .project h4');
+  let allProjects = document.querySelectorAll('.projects .project');
   allProjects.forEach((project)=> {
     project.addEventListener('click',(e)=> {
-      if(e.target.getAttribute('data-info') === 'all-projects'){
+      let li = e.target.classList.length == 0 ? e.target.parentNode : e.target;
+      if(li.getAttribute('data-info') === 'all-projects'){
         let projectList = ldb().getAr('projectList')
         self.projectListRightInfo(projectList);
       }
-      self.changeNavCurrentActive(e.target);
+      self.changeNavCurrentActive(li);
     })
   });
   },
