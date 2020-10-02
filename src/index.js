@@ -7,7 +7,7 @@ const importedProject = Projects();
 const importedtoDoPage = toDoPage();
 
 window.onload = () => {
-  const projects = importedProject.getList();
+  const projects = importedProject.getList('projectList');
   domchange.projectOptions(projects);
   domchange.projectListNav(projects);
   importedProject.addProject();

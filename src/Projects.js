@@ -13,8 +13,10 @@ class TodoProject {
 }
 const Projects = () => {
   const getList = () => {
-    projectList = ldb.getAr('projectList') == null ? ldb.setAr('projectList', ['Default']) : ldb.getAr('projectList');
-    return projectList;
+    if (ldb.getAr('projectList') == null) {
+      ldb.setAr('projectList', ['Default']);
+    }
+    return ldb.getAr('projectList');
   };
   const insertProject = (projectName) => {
     // eslint-disable-next-line no-unused-vars
