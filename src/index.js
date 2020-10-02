@@ -1,6 +1,7 @@
 import domchange from './dom-change';
 import Projects from './Projects';
 import './styles.css';
+import toDoPage from './todo.js';
 
 const importedProject = Projects();
 

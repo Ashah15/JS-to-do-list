@@ -1,3 +1,6 @@
+import domchange from './dom-change';
+import localDB from './local-storage';
+
 class TodoItem {
   constructor(title,
     description,
