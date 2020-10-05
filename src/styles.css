@@ -162,3 +162,13 @@
   background-color: antiquewhite;
   cursor: pointer;
 }
+
+.todo-section-div {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.todo-section {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
