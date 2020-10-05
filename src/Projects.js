@@ -3,7 +3,7 @@ import localDB from './local-storage';
 
 const ldb = localDB();
 
-let projectList;
+const projectList = ldb.getAr('projectList') == null ? ldb.setAr('projectList', ['Default']) : ldb.getAr('projectList');
 class TodoProject {
   constructor(name = 'Default') {
     this.name = name;
@@ -65,6 +65,7 @@ const Projects = () => {
       document.querySelector('.project-module').classList.add('d-none');
       document.forms.projectForm.reset();
     }
+    domchange.navListeners();
   };
 
   const addProject = () => {
