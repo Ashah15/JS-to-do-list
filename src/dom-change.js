@@ -99,7 +99,9 @@ const domChanges = {
     }
 
     addToDoButton.addEventListener('click', () => {
-      // displayToDoForm(name, value);
+      document.querySelector('.form-container').classList.remove('d-none');
+      const projectList = ldb().getAr('projectList');
+      document.getElementById('project-id').options[projectList.indexOf(title)].setAttribute('selected', '');
     });
   },
   changeNavCurrentActive: (node) => {
