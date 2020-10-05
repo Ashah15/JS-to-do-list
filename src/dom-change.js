@@ -83,8 +83,6 @@ const domChanges = {
         todoSection.appendChild(toDoSectionPriority);
       }
 
-      const toDoObject = toDoList[i];
-
       const editIcon = document.createElement('i');
       editIcon.setAttribute('class', 'fas fa-edit');
 

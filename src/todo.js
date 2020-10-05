@@ -30,79 +30,6 @@ const toDoPage = () => {
     toDoList.push(todo);
     ldb.setAr('toDoList', toDoList);
   };
-  const displayToDo = (name, value, x) => {
-    const toDoDiv = document.createElement('div');
-    toDoDiv.setAttribute('class', 'main-div');
-
-    document.querySelector('.all-content').appendChild(toDoDiv);
-
-    const toDoProjectTitle = document.createElement('h1');
-    toDoProjectTitle.innerHTML = name;
-
-    const addToDoButton = document.createElement('button');
-    addToDoButton.innerHTML = 'Add New Task';
-    addToDoButton.setAttribute('class', 'btn btn-primary todo-button');
-
-    toDoDiv.appendChild(toDoProjectTitle);
-    toDoDiv.appendChild(addToDoButton);
-
-    const toDoSectionMainDiv = document.createElement('div');
-    toDoSectionMainDiv.setAttribute('class', 'todo-section-div ');
-
-    toDoDiv.appendChild(toDoSectionMainDiv);
-
-    for (let i = 0; i < toDoList.length; i += 1) {
-      if (value === toDoList[i].project) {
-        const todoSection = document.createElement('div');
-        todoSection.setAttribute('class', 'todo-section');
-        const toDoParagraph = document.createElement('p');
-        toDoParagraph.setAttribute('class', 'p-title');
-        toDoParagraph.innerHTML = toDoList[i].title;
-        const toDoDate = document.createElement('p');
-        toDoDate.setAttribute('class', 'p-date');
-        toDoDate.innerHTML = toDoList[i].duedate;
-
-        todoSection.appendChild(toDoParagraph);
-        todoSection.appendChild(toDoDate);
-
-        if (toDoList[i].priority === 'High') {
-          const toDoSectionPriority = document.createElement('p');
-          toDoSectionPriority.setAttribute('class', 'high-priority');
-          toDoSectionPriority.innerHTML = toDoList[i].priority;
-          todoSection.appendChild(toDoSectionPriority);
-        } else if (toDoList[i].priority === 'Medium') {
-          const toDoSectionPriority = document.createElement('p');
-          toDoSectionPriority.setAttribute('class', 'medium-priority');
-          toDoSectionPriority.innerHTML = toDoList[i].priority;
-          todoSection.appendChild(toDoSectionPriority);
-        } else if (toDoList[i].priority === 'Low') {
-          const toDoSectionPriority = document.createElement('p');
-          toDoSectionPriority.setAttribute('class', 'low-priority');
-          toDoSectionPriority.innerHTML = toDoList[i].priority;
-          todoSection.appendChild(toDoSectionPriority);
-        }
-
-        const toDoObject = toDoList[i];
-
-        const editIcon = document.createElement('i');
-        editIcon.setAttribute('class', 'fas fa-edit');
-
-        const deleteIcon = document.createElement('i');
-        deleteIcon.setAttribute('class', 'fas fa-trash-alt');
-
-        todoSection.appendChild(editIcon);
-        todoSection.appendChild(deleteIcon);
-
-        toDoDiv.appendChild(todoSection);
-
-        toDoSectionMainDiv.appendChild(todoSection);
-      }
-    }
-
-    addToDoButton.addEventListener('click', () => {
-      // displayToDoForm(name, value);
-    });
-  };
 
   const addTodoLogic = () => {
     const submitToDoButton = document.querySelector('.todoFormButtons .save-btn');
@@ -138,7 +65,7 @@ const toDoPage = () => {
       document.querySelector('.form-container').classList.add('d-none');
     });
   };
-  return { displayToDo, addTodoLogic };
+  return { getTodo, addTodoLogic };
 };
 
 
