@@ -58,6 +58,7 @@ const Projects = () => {
   // };
 
   const addToProjectList = (e) => {
+    console.log(document.querySelector('.project[active]'));
     e.preventDefault();
     if (document.forms.projectForm.reportValidity()) {
       const newProjectName = document.querySelector('#addproject').value;
@@ -66,6 +67,7 @@ const Projects = () => {
       document.forms.projectForm.reset();
     }
     domchange.navListeners();
+    
   };
 
   const addProject = () => {

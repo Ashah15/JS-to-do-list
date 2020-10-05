@@ -52,9 +52,8 @@ const domChanges = {
           const projectList = ldb().getAr('projectList');
           console.log('click');
           domChanges.projectListRightInfo(projectList);
-        } else {
-          domChanges.changeNavCurrentActive(li);
         }
+        domChanges.changeNavCurrentActive(li);
       });
     });
   },
