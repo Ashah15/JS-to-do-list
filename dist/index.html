@@ -37,19 +37,19 @@
           <h2>Create a new Event</h2>
           <label>
             Title:
-            <input id="title-id"  type="text" name="title" />
+            <input id="title-id"  type="text" name="title" required />
           </label>
           <label>
             Description:
-            <textarea id="description-id" name="description" cols="30" rows="10"></textarea>
+            <textarea id="description-id" name="description" cols="30" rows="10" required></textarea>
           </label>
           <label>
             Due Date/time:
-            <input id="dueDate-id" type="datetime-local" name="date" />
+            <input id="dueDate-id" type="datetime-local" name="date" required />
           </label>
           <label>
             Priority
-            <select name="priority" id="priority-id">
+            <select name="priority" id="priority-id" required>
               <option value="low">Low</option>
               <option value="medium">Medium</option>
               <option value="high">High</option>
@@ -57,7 +57,7 @@
           </label>
           <label>
             Projects:
-            <select id="project-id" name="project"></select>
+            <select id="project-id" name="project" required></select>
           </label>
 
           <div class="todoFormButtons cta-btns">

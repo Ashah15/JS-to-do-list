@@ -16,7 +16,6 @@ class TodoItem {
     this.priority = priority;
     this.project = project;
   }
-
 }
 const toDoList = ldb.getAr('toDoList') == null ? ldb.setAr('toDoList', []) : ldb.getAr('toDoList');
 
@@ -30,7 +29,7 @@ const toDoPage = () => {
   const updatetoDoList = (todo) => {
     toDoList.push(todo);
     ldb.setAr('toDoList', toDoList);
-  }
+  };
   const displayToDo = (name, value, x) => {
     const toDoDiv = document.createElement('div');
     toDoDiv.setAttribute('class', 'main-div');
@@ -127,9 +126,16 @@ const toDoPage = () => {
             newUserProject,
           );
           updatetoDoList(newToDo);
+          document.querySelector('.form-container').classList.add('d-none');
+          document.forms.todoForm.reset();
           // ldb.getAr('taDoList', getTodo());
         }
       }
+    });
+    const cancelToDoButton = document.querySelector('.todoFormButtons .cancel-btn');
+    cancelToDoButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('.form-container').classList.add('d-none');
     });
   };
   return { displayToDo, addTodoLogic };

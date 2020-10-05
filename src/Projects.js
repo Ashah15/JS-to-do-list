@@ -67,7 +67,6 @@ const Projects = () => {
       document.forms.projectForm.reset();
     }
     domchange.navListeners();
-    
   };
 
   const addProject = () => {
