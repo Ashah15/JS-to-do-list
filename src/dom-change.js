@@ -52,49 +52,50 @@ const domChanges = {
     toDoSectionMainDiv.setAttribute('class', 'todo-section-div ');
 
     toDoDiv.appendChild(toDoSectionMainDiv);
+    if (toDoList) {
+      for (let i = 0; i < toDoList.length; i += 1) {
+        const todoSection = document.createElement('div');
+        todoSection.setAttribute('class', 'todo-section');
+        const toDoParagraph = document.createElement('p');
+        toDoParagraph.setAttribute('class', 'p-title');
+        toDoParagraph.innerHTML = toDoList[i].title;
+        const toDoDate = document.createElement('p');
+        toDoDate.setAttribute('class', 'p-date');
+        toDoDate.innerHTML = toDoList[i].dueDate;
 
-    for (let i = 0; i < toDoList.length; i += 1) {
-      const todoSection = document.createElement('div');
-      todoSection.setAttribute('class', 'todo-section');
-      const toDoParagraph = document.createElement('p');
-      toDoParagraph.setAttribute('class', 'p-title');
-      toDoParagraph.innerHTML = toDoList[i].title;
-      const toDoDate = document.createElement('p');
-      toDoDate.setAttribute('class', 'p-date');
-      toDoDate.innerHTML = toDoList[i].dueDate;
+        todoSection.appendChild(toDoParagraph);
+        todoSection.appendChild(toDoDate);
 
-      todoSection.appendChild(toDoParagraph);
-      todoSection.appendChild(toDoDate);
+        if (toDoList[i].priority === 'high') {
+          const toDoSectionPriority = document.createElement('p');
+          toDoSectionPriority.setAttribute('class', 'high-priority');
+          toDoSectionPriority.innerHTML = toDoList[i].priority;
+          todoSection.appendChild(toDoSectionPriority);
+        } else if (toDoList[i].priority === 'hedium') {
+          const toDoSectionPriority = document.createElement('p');
+          toDoSectionPriority.setAttribute('class', 'medium-priority');
+          toDoSectionPriority.innerHTML = toDoList[i].priority;
+          todoSection.appendChild(toDoSectionPriority);
+        } else if (toDoList[i].priority === 'low') {
+          const toDoSectionPriority = document.createElement('p');
+          toDoSectionPriority.setAttribute('class', 'low-priority');
+          toDoSectionPriority.innerHTML = toDoList[i].priority;
+          todoSection.appendChild(toDoSectionPriority);
+        }
 
-      if (toDoList[i].priority === 'high') {
-        const toDoSectionPriority = document.createElement('p');
-        toDoSectionPriority.setAttribute('class', 'high-priority');
-        toDoSectionPriority.innerHTML = toDoList[i].priority;
-        todoSection.appendChild(toDoSectionPriority);
-      } else if (toDoList[i].priority === 'hedium') {
-        const toDoSectionPriority = document.createElement('p');
-        toDoSectionPriority.setAttribute('class', 'medium-priority');
-        toDoSectionPriority.innerHTML = toDoList[i].priority;
-        todoSection.appendChild(toDoSectionPriority);
-      } else if (toDoList[i].priority === 'low') {
-        const toDoSectionPriority = document.createElement('p');
-        toDoSectionPriority.setAttribute('class', 'low-priority');
-        toDoSectionPriority.innerHTML = toDoList[i].priority;
-        todoSection.appendChild(toDoSectionPriority);
+        const editIcon = document.createElement('i');
+        editIcon.setAttribute('class', 'fas fa-edit');
+
+        const deleteIcon = document.createElement('i');
+        deleteIcon.setAttribute('class', 'fas fa-trash-alt');
+
+        todoSection.appendChild(editIcon);
+        todoSection.appendChild(deleteIcon);
+
+        toDoDiv.appendChild(todoSection);
+
+        toDoSectionMainDiv.appendChild(todoSection);
       }
-
-      const editIcon = document.createElement('i');
-      editIcon.setAttribute('class', 'fas fa-edit');
-
-      const deleteIcon = document.createElement('i');
-      deleteIcon.setAttribute('class', 'fas fa-trash-alt');
-
-      todoSection.appendChild(editIcon);
-      todoSection.appendChild(deleteIcon);
-
-      toDoDiv.appendChild(todoSection);
-
-      toDoSectionMainDiv.appendChild(todoSection);
     }
 
     addToDoButton.addEventListener('click', () => {
