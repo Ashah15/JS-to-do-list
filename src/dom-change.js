@@ -40,6 +40,24 @@ const domChanges = {
       node.setAttribute('active', '');
     }
   },
+  invokeListeners: () => {
+    domChanges.addListeners();
+  },
+  navListeners: () => {
+    const allProjects = document.querySelectorAll('.projects .project');
+    allProjects.forEach((project) => {
+      project.addEventListener('click', (e) => {
+        const li = e.target.classList.length === 0 ? e.target.parentNode : e.target;
+        if (li.getAttribute('data-info') === 'all-projects') {
+          const projectList = ldb().getAr('projectList');
+          console.log('click');
+          domChanges.projectListRightInfo(projectList);
+        } else {
+          domChanges.changeNavCurrentActive(li);
+        }
+      });
+    });
+  },
   addListeners: () => {
     document.getElementById('formToggle').addEventListener('click', () => {
       document.querySelector('.form-container').classList.remove('d-none');
@@ -58,18 +76,9 @@ const domChanges = {
         document.querySelector('.project-module').classList.add('d-none');
       }
     });
-
-    const allProjects = document.querySelectorAll('.projects .project');
-    allProjects.forEach((project) => {
-      project.addEventListener('click', (e) => {
-        const li = e.target.classList.length === 0 ? e.target.parentNode : e.target;
-        if (li.getAttribute('data-info') === 'all-projects') {
-          const projectList = ldb().getAr('projectList');
-          domChanges.projectListRightInfo(projectList);
-        }
-        domChanges.changeNavCurrentActive(li);
-      });
-    });
+    domChanges.navListeners();
   },
 };
+
+
 export default domChanges;
