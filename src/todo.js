@@ -2,6 +2,7 @@ import domchange from './dom-change';
 import localDB from './local-storage';
 
 const ldb = localDB();
+const projects = ldb.getAr('projectList');
 
 class TodoItem {
   constructor(title,
@@ -70,7 +71,7 @@ const toDoPage = () => {
           todoSection.appendChild(toDoSectionPriority);
         }
 
-        // const toDoObject = toDoList[i];
+        const toDoObject = toDoList[i];
 
         const editIcon = document.createElement('i');
         editIcon.setAttribute('class', 'fas fa-edit');
@@ -91,6 +92,17 @@ const toDoPage = () => {
       displayToDoForm(name, value);
     });
   };
+
+  // const addToToDoList = (e) => {
+  //   e.preventDefault();
+  //   if (document.forms.projectForm.reportValidity()) {
+  //     const newProjectName = document.querySelector('#addproject').value;
+  //     insertProject(newProjectName);
+  //     document.querySelector('.project-module').classList.add('d-none');
+  //     document.forms.projectForm.reset();
+  //   }
+  // };
+
 
   submitToDoButton.addEventListener('click', () => {
     if (toDoList.indexOf(toDoList[x]) !== -1) {
