@@ -1,10 +1,10 @@
 import domchange from './dom-change';
 import Projects from './Projects';
 import './styles.css';
-// import toDoPage from './todo.js';
+import toDoPage from './todo';
 
 const importedProject = Projects();
-// const importedtoDoPage = toDoPage();
+const importedtoDoPage = toDoPage();
 
 window.onload = () => {
   const projects = importedProject.getList('projectList');
@@ -12,5 +12,5 @@ window.onload = () => {
   domchange.projectListNav(projects);
   importedProject.addProject();
   domchange.addListeners();
-  // importedtoDoPage.displayToDo();
+  importedtoDoPage.addTodoLogic();
 };

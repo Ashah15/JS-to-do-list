@@ -1,4 +1,4 @@
-import domchange from './dom-change';
+// import domchange from './dom-change';
 import localDB from './local-storage';
 
 const ldb = localDB();
@@ -16,9 +16,21 @@ class TodoItem {
     this.priority = priority;
     this.project = project;
   }
+
 }
+const toDoList = ldb.getAr('toDoList') == null ? ldb.setAr('toDoList', []) : ldb.getAr('toDoList');
 
 const toDoPage = () => {
+  const getTodo = () => {
+    if (ldb.getAr('toDoList') == null) {
+      ldb.setAr('toDoList', []);
+    }
+    return ldb.getAr('toDoList');
+  };
+  const updatetoDoList = (todo) => {
+    toDoList.push(todo);
+    ldb.setAr('toDoList', toDoList);
+  }
   const displayToDo = (name, value, x) => {
     const toDoDiv = document.createElement('div');
     toDoDiv.setAttribute('class', 'main-div');
@@ -89,43 +101,38 @@ const toDoPage = () => {
     }
 
     addToDoButton.addEventListener('click', () => {
-      displayToDoForm(name, value);
+      // displayToDoForm(name, value);
     });
   };
 
-  // const addToToDoList = (e) => {
-  //   e.preventDefault();
-  //   if (document.forms.projectForm.reportValidity()) {
-  //     const newProjectName = document.querySelector('#addproject').value;
-  //     insertProject(newProjectName);
-  //     document.querySelector('.project-module').classList.add('d-none');
-  //     document.forms.projectForm.reset();
-  //   }
-  // };
+  const addTodoLogic = () => {
+    const submitToDoButton = document.querySelector('.todoFormButtons .save-btn');
+    submitToDoButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (document.forms.todoForm.reportValidity()) {
+        const newtoDoTitle = document.getElementById('title-id').value;
+        const newtoDoDescription = document.getElementById('description-id').value;
+        const newtoDoDueDate = document.getElementById('dueDate-id').value;
+        const newtoDoPriority = document.getElementById('priority-id');
+        const newtoDoProject = document.getElementById('project-id');
+        const newUserProject = newtoDoProject.options[newtoDoProject.selectedIndex].value;
+        const newUserPriority = newtoDoPriority.options[newtoDoPriority.selectedIndex].value;
 
-
-  submitToDoButton.addEventListener('click', () => {
-    if (toDoList.indexOf(toDoList[x]) !== -1) {
-      const newtoDoTitle = document.getElementById('title-id').value;
-      const newtoDoDescription = document.getElementById('description-id').value;
-      const newtoDoDueDate = document.getElementById('dueDate-id').value;
-      const newtoDoPriority = document.getElementById('priority-id');
-
-      const newUserPriority = newtoDoPriority.options[newtoDoPriority.selectedIndex].text;
-
-      if (newtoDoTitle && newtoDoDescription && newtoDoDueDate) {
-        toDoList[x].title = newtoDoTitle;
-        toDoList[x].description = newtoDoDescription;
-        toDoList[x].duedate = newtoDoDueDate;
-        toDoList[x].priority = newUserPriority;
+        if (newtoDoTitle && newtoDoDescription && newtoDoDueDate) {
+          const newToDo = new TodoItem(
+            newtoDoTitle,
+            newtoDoDescription,
+            newtoDoDueDate,
+            newUserPriority,
+            newUserProject,
+          );
+          updatetoDoList(newToDo);
+          // ldb.getAr('taDoList', getTodo());
+        }
       }
-    } else {
-      document.getElementById('todoDoForm').classList.add('hide-toDo-form-first');
-      document.querySelector('.main-todo-div').classList.add('hide-toDo-form-first');
-    }
-  });
-
-  return { displayToDo };
+    });
+  };
+  return { displayToDo, addTodoLogic };
 };
 
 
