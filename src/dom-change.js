@@ -31,6 +31,78 @@ const domChanges = {
     });
     rightSection.innerHTML = projectDOM;
   },
+  displayToDo: (toDoList, title) => {
+    const toDoDiv = document.createElement('div');
+    toDoDiv.setAttribute('class', 'main-div');
+
+    document.querySelector('.right-info .right-section:first-child').innerHTML = '';
+    document.querySelector('.right-info .right-section:first-child').appendChild(toDoDiv);
+
+    const toDoProjectTitle = document.createElement('h1');
+    toDoProjectTitle.innerHTML = title;
+
+    const addToDoButton = document.createElement('button');
+    addToDoButton.innerHTML = 'Add New Task';
+    addToDoButton.setAttribute('class', 'btn btn-primary todo-button');
+
+    toDoDiv.appendChild(toDoProjectTitle);
+    toDoDiv.appendChild(addToDoButton);
+
+    const toDoSectionMainDiv = document.createElement('div');
+    toDoSectionMainDiv.setAttribute('class', 'todo-section-div ');
+
+    toDoDiv.appendChild(toDoSectionMainDiv);
+
+    for (let i = 0; i < toDoList.length; i += 1) {
+      const todoSection = document.createElement('div');
+      todoSection.setAttribute('class', 'todo-section');
+      const toDoParagraph = document.createElement('p');
+      toDoParagraph.setAttribute('class', 'p-title');
+      toDoParagraph.innerHTML = toDoList[i].title;
+      const toDoDate = document.createElement('p');
+      toDoDate.setAttribute('class', 'p-date');
+      toDoDate.innerHTML = toDoList[i].dueDate;
+
+      todoSection.appendChild(toDoParagraph);
+      todoSection.appendChild(toDoDate);
+
+      if (toDoList[i].priority === 'high') {
+        const toDoSectionPriority = document.createElement('p');
+        toDoSectionPriority.setAttribute('class', 'high-priority');
+        toDoSectionPriority.innerHTML = toDoList[i].priority;
+        todoSection.appendChild(toDoSectionPriority);
+      } else if (toDoList[i].priority === 'hedium') {
+        const toDoSectionPriority = document.createElement('p');
+        toDoSectionPriority.setAttribute('class', 'medium-priority');
+        toDoSectionPriority.innerHTML = toDoList[i].priority;
+        todoSection.appendChild(toDoSectionPriority);
+      } else if (toDoList[i].priority === 'low') {
+        const toDoSectionPriority = document.createElement('p');
+        toDoSectionPriority.setAttribute('class', 'low-priority');
+        toDoSectionPriority.innerHTML = toDoList[i].priority;
+        todoSection.appendChild(toDoSectionPriority);
+      }
+
+      const toDoObject = toDoList[i];
+
+      const editIcon = document.createElement('i');
+      editIcon.setAttribute('class', 'fas fa-edit');
+
+      const deleteIcon = document.createElement('i');
+      deleteIcon.setAttribute('class', 'fas fa-trash-alt');
+
+      todoSection.appendChild(editIcon);
+      todoSection.appendChild(deleteIcon);
+
+      toDoDiv.appendChild(todoSection);
+
+      toDoSectionMainDiv.appendChild(todoSection);
+    }
+
+    addToDoButton.addEventListener('click', () => {
+      // displayToDoForm(name, value);
+    });
+  },
   changeNavCurrentActive: (node) => {
     const currentActive = document.querySelector('li.project[active]');
     if (currentActive) {
@@ -48,10 +120,24 @@ const domChanges = {
     allProjects.forEach((project) => {
       project.addEventListener('click', (e) => {
         const li = e.target.classList.length === 0 ? e.target.parentNode : e.target;
-        if (li.getAttribute('data-info') === 'all-projects') {
+        const liAttribute = li.getAttribute('data-info');
+        const projectToDoList = {};
+        const todos = ldb().getAr('toDoList');
+        todos.forEach((obj) => {
+          if (projectToDoList[obj.project]) {
+            projectToDoList[obj.project].push(obj);
+          } else {
+            projectToDoList[obj.project] = [obj];
+          }
+        });
+        ldb().setAr('projectToDoList', projectToDoList);
+        if (liAttribute === 'all-projects') {
           const projectList = ldb().getAr('projectList');
-          console.log('click');
           domChanges.projectListRightInfo(projectList);
+        } else {
+          const customProjectList = ldb().getAr('projectToDoList');
+          // domChanges.projectListRightInfo();
+          domChanges.displayToDo(customProjectList[liAttribute], liAttribute);
         }
         domChanges.changeNavCurrentActive(li);
       });
