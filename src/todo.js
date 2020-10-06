@@ -8,11 +8,13 @@ class TodoItem {
   constructor(title,
     description,
     dueDate,
+    dueDateText,
     priority = 'low',
     project = projects[0]) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
+    this.dueDateText = dueDateText;
     this.priority = priority;
     this.project = project;
   }
@@ -39,6 +41,7 @@ const toDoPage = () => {
         const newtoDoTitle = document.getElementById('title-id').value;
         const newtoDoDescription = document.getElementById('description-id').value;
         const newtoDoDueDate = document.getElementById('dueDate-id').value;
+        const newtoDoDueDateText = document.querySelector('.form-control.input').value;
         const newtoDoPriority = document.getElementById('priority-id');
         const newtoDoProject = document.getElementById('project-id');
         const newUserProject = newtoDoProject.options[newtoDoProject.selectedIndex].value;
@@ -49,6 +52,7 @@ const toDoPage = () => {
             newtoDoTitle,
             newtoDoDescription,
             newtoDoDueDate,
+            newtoDoDueDateText,
             newUserPriority,
             newUserProject,
           );

@@ -67,8 +67,8 @@ const domChanges = {
         toDoParagraph.innerHTML = toDoList[i].title;
         const toDoDate = document.createElement('p');
         toDoDate.setAttribute('class', 'p-date');
-        toDoDate.innerHTML = toDoList[i].dueDate;
-
+        toDoDate.innerHTML = toDoList[i].dueDateText
+          ? toDoList[i].dueDateText : toDoList[i].dueDate;
         todoSection.appendChild(toDoParagraph);
         todoSection.appendChild(toDoDate);
 
@@ -88,6 +88,17 @@ const domChanges = {
           toDoSectionPriority.innerHTML = toDoList[i].priority;
           todoSection.appendChild(toDoSectionPriority);
         }
+
+        const todoMetaDiv = document.createElement('div');
+        todoMetaDiv.classList.add('todo-item-meta');
+        todoMetaDiv.appendChild(toDoDate);
+
+        const toDoSectionPriority = document.createElement('p');
+        toDoSectionPriority.setAttribute('class', `${toDoList[i].priority}-priority`);
+        toDoSectionPriority.innerHTML = toDoList[i].priority;
+        todoMetaDiv.appendChild(toDoSectionPriority);
+
+        todoSection.appendChild(todoMetaDiv);
 
         const editIcon = document.createElement('i');
         editIcon.setAttribute('class', 'fas fa-edit');
@@ -158,7 +169,7 @@ const domChanges = {
     flatpickr(document.querySelector('#dueDate-id'), {
       enableTime: true,
       altInput: true,
-      altFormat: 'F j, Y h:iK',
+      altFormat: 'M j, Y h:iK',
       dateFormat: 'Y-m-dTh:i',
     });
     document.getElementById('formToggle').addEventListener('click', () => {
