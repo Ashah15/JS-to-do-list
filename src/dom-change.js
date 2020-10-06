@@ -100,8 +100,10 @@ const domChanges = {
         todoSection.addEventListener('click', () => {
           const rightSection = document.querySelector('.right-info .right-section:last-child');
           rightSection.classList.remove('v-hidden');
+          const todoContainer = document.createElement('div');
+          todoContainer.classList.add('todo-container');
           const todo = ldb().getAr('projectToDoList')[title][i];
-          const todoTitle = document.createElement('h4');
+          const todoTitle = document.createElement('h2');
           todoTitle.innerHTML = todo.title;
 
           const todoDesc = document.createElement('p');
@@ -114,12 +116,14 @@ const domChanges = {
           todoDatePriorityDiv.appendChild(todoDueDateText);
           const todoPriority = document.createElement('h4');
           todoPriority.innerHTML = todo.priority;
+          todoPriority.classList.add(`${todo.priority}-priority`);
           todoDatePriorityDiv.appendChild(todoPriority);
 
           rightSection.innerHTML = '';
-          rightSection.appendChild(todoTitle);
-          rightSection.appendChild(todoDesc);
-          rightSection.appendChild(todoDatePriorityDiv);
+          todoContainer.appendChild(todoTitle);
+          todoContainer.appendChild(todoDesc);
+          todoContainer.appendChild(todoDatePriorityDiv);
+          rightSection.appendChild(todoContainer);
         });
       }
     }
