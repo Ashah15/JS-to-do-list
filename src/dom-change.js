@@ -72,23 +72,6 @@ const domChanges = {
         todoSection.appendChild(toDoParagraph);
         todoSection.appendChild(toDoDate);
 
-        if (toDoList[i].priority === 'high') {
-          const toDoSectionPriority = document.createElement('p');
-          toDoSectionPriority.setAttribute('class', 'high-priority');
-          toDoSectionPriority.innerHTML = toDoList[i].priority;
-          todoSection.appendChild(toDoSectionPriority);
-        } else if (toDoList[i].priority === 'medium') {
-          const toDoSectionPriority = document.createElement('p');
-          toDoSectionPriority.setAttribute('class', 'medium-priority');
-          toDoSectionPriority.innerHTML = toDoList[i].priority;
-          todoSection.appendChild(toDoSectionPriority);
-        } else if (toDoList[i].priority === 'low') {
-          const toDoSectionPriority = document.createElement('p');
-          toDoSectionPriority.setAttribute('class', 'low-priority');
-          toDoSectionPriority.innerHTML = toDoList[i].priority;
-          todoSection.appendChild(toDoSectionPriority);
-        }
-
         const todoMetaDiv = document.createElement('div');
         todoMetaDiv.classList.add('todo-item-meta');
         todoMetaDiv.appendChild(toDoDate);
