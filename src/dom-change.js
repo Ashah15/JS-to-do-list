@@ -67,27 +67,16 @@ const domChanges = {
         toDoParagraph.innerHTML = toDoList[i].title;
         const toDoDate = document.createElement('p');
         toDoDate.setAttribute('class', 'p-date');
-        toDoDate.innerHTML = toDoList[i].dueDate;
+        toDoDate.innerHTML = toDoList[i].dueDateText
+          ? toDoList[i].dueDateText : toDoList[i].dueDate;
 
         todoSection.appendChild(toDoParagraph);
         todoSection.appendChild(toDoDate);
 
-        if (toDoList[i].priority === 'high') {
-          const toDoSectionPriority = document.createElement('p');
-          toDoSectionPriority.setAttribute('class', 'high-priority');
-          toDoSectionPriority.innerHTML = toDoList[i].priority;
-          todoSection.appendChild(toDoSectionPriority);
-        } else if (toDoList[i].priority === 'hedium') {
-          const toDoSectionPriority = document.createElement('p');
-          toDoSectionPriority.setAttribute('class', 'medium-priority');
-          toDoSectionPriority.innerHTML = toDoList[i].priority;
-          todoSection.appendChild(toDoSectionPriority);
-        } else if (toDoList[i].priority === 'low') {
-          const toDoSectionPriority = document.createElement('p');
-          toDoSectionPriority.setAttribute('class', 'low-priority');
-          toDoSectionPriority.innerHTML = toDoList[i].priority;
-          todoSection.appendChild(toDoSectionPriority);
-        }
+        const toDoSectionPriority = document.createElement('p');
+        toDoSectionPriority.setAttribute('class', `${toDoList[i].priority}-priority`);
+        toDoSectionPriority.innerHTML = toDoList[i].priority;
+        todoSection.appendChild(toDoSectionPriority);
 
         const editIcon = document.createElement('i');
         editIcon.setAttribute('class', 'fas fa-edit');
@@ -158,7 +147,7 @@ const domChanges = {
     flatpickr(document.querySelector('#dueDate-id'), {
       enableTime: true,
       altInput: true,
-      altFormat: 'F j, Y h:iK',
+      altFormat: 'M j, Y h:iK',
       dateFormat: 'Y-m-dTh:i',
     });
     document.getElementById('formToggle').addEventListener('click', () => {
