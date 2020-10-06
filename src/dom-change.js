@@ -77,7 +77,7 @@ const domChanges = {
           toDoSectionPriority.setAttribute('class', 'high-priority');
           toDoSectionPriority.innerHTML = toDoList[i].priority;
           todoSection.appendChild(toDoSectionPriority);
-        } else if (toDoList[i].priority === 'hedium') {
+        } else if (toDoList[i].priority === 'medium') {
           const toDoSectionPriority = document.createElement('p');
           toDoSectionPriority.setAttribute('class', 'medium-priority');
           toDoSectionPriority.innerHTML = toDoList[i].priority;
