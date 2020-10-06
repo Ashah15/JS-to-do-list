@@ -173,6 +173,9 @@ const domChanges = {
           // domChanges.projectListRightInfo();
           domChanges.displayToDo(customProjectList[liAttribute], liAttribute);
         }
+        if (![...document.querySelector('.right-info .right-section:last-child').classList].includes('v-hidden')) {
+          document.querySelector('.right-info .right-section:last-child').classList.add('v-hidden');
+        }
         domChanges.changeNavCurrentActive(li);
       });
     });
