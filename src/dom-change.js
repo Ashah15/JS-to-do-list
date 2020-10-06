@@ -62,6 +62,8 @@ const domChanges = {
       for (let i = 0; i < toDoList.length; i += 1) {
         const todoSection = document.createElement('div');
         todoSection.setAttribute('class', 'todo-section');
+        todoSection.setAttribute('data-project', title);
+        todoSection.setAttribute('data-item', i);
         const toDoParagraph = document.createElement('p');
         toDoParagraph.setAttribute('class', 'p-title');
         toDoParagraph.innerHTML = toDoList[i].title;
@@ -95,6 +97,30 @@ const domChanges = {
         toDoDiv.appendChild(todoSection);
 
         toDoSectionMainDiv.appendChild(todoSection);
+        todoSection.addEventListener('click', () => {
+          const rightSection = document.querySelector('.right-info .right-section:last-child');
+          rightSection.classList.remove('v-hidden');
+          const todo = ldb().getAr('projectToDoList')[title][i];
+          const todoTitle = document.createElement('h4');
+          todoTitle.innerHTML = todo.title;
+
+          const todoDesc = document.createElement('p');
+          todoDesc.innerHTML = todo.description;
+
+          const todoDatePriorityDiv = document.createElement('div');
+          todoDatePriorityDiv.classList.add('todo-item-meta');
+          const todoDueDateText = document.createElement('h4');
+          todoDueDateText.innerHTML = todo.dueDateText;
+          todoDatePriorityDiv.appendChild(todoDueDateText);
+          const todoPriority = document.createElement('h4');
+          todoPriority.innerHTML = todo.priority;
+          todoDatePriorityDiv.appendChild(todoPriority);
+
+          rightSection.innerHTML = '';
+          rightSection.appendChild(todoTitle);
+          rightSection.appendChild(todoDesc);
+          rightSection.appendChild(todoDatePriorityDiv);
+        });
       }
     }
 
