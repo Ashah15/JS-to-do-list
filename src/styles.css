@@ -180,14 +180,16 @@
 }
 
 .todo-section-div {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: 30px auto;
 }
 
 .todo-section {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin: 15px auto;
+}
+
+.todo-section .todo-item-meta {
   display: flex;
+  justify-content: space-between;
 }
 
 .todo-section p {

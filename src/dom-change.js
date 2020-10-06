@@ -69,14 +69,18 @@ const domChanges = {
         toDoDate.setAttribute('class', 'p-date');
         toDoDate.innerHTML = toDoList[i].dueDateText
           ? toDoList[i].dueDateText : toDoList[i].dueDate;
-
         todoSection.appendChild(toDoParagraph);
-        todoSection.appendChild(toDoDate);
+
+        const todoMetaDiv = document.createElement('div');
+        todoMetaDiv.classList.add('todo-item-meta');
+        todoMetaDiv.appendChild(toDoDate);
 
         const toDoSectionPriority = document.createElement('p');
         toDoSectionPriority.setAttribute('class', `${toDoList[i].priority}-priority`);
         toDoSectionPriority.innerHTML = toDoList[i].priority;
-        todoSection.appendChild(toDoSectionPriority);
+        todoMetaDiv.appendChild(toDoSectionPriority);
+
+        todoSection.appendChild(todoMetaDiv);
 
         const editIcon = document.createElement('i');
         editIcon.setAttribute('class', 'fas fa-edit');
