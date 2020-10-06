@@ -31,6 +31,7 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "flatpickr": "^4.6.6",
     "http-server": "^0.12.3"
   }
 }

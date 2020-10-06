@@ -1,3 +1,5 @@
+@import "../node_modules/flatpickr/dist/flatpickr.min.css";
+
 *,
 *::after,
 *::before {
@@ -8,7 +10,7 @@
 
 .logo {
   color: #b83b5e;
-  font-family: 'Oleo Script', cursive;
+  font-family: "Oleo Script", cursive;
   font-size: 3rem;
 }
 

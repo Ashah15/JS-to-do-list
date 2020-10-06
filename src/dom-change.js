@@ -1,6 +1,9 @@
+import flatpickr from 'flatpickr';
+
 const ldb = require('./local-storage').default;
 
 const domChanges = {
+
   projectListNav: (projects) => {
     let project = '';
     projects.forEach((val) => {
@@ -13,6 +16,7 @@ const domChanges = {
     `;
     document.querySelector('.projects').innerHTML = project;
   },
+
   projectOptions: (projects) => {
     const formProject = document.forms.todoForm.project;
     let projectOptions = '';
@@ -21,6 +25,7 @@ const domChanges = {
     });
     formProject.innerHTML = projectOptions;
   },
+
   projectListRightInfo: (projectList) => {
     const rightSection = document.querySelector('.right-info .right-section:first-child');
     let projectDOM = '';
@@ -31,6 +36,7 @@ const domChanges = {
     });
     rightSection.innerHTML = projectDOM;
   },
+
   displayToDo: (toDoList, title) => {
     const toDoDiv = document.createElement('div');
     toDoDiv.setAttribute('class', 'main-div');
@@ -104,6 +110,7 @@ const domChanges = {
       document.getElementById('project-id').options[projectList.indexOf(title)].setAttribute('selected', '');
     });
   },
+
   changeNavCurrentActive: (node) => {
     const currentActive = document.querySelector('li.project[active]');
     if (currentActive) {
@@ -113,9 +120,11 @@ const domChanges = {
       node.setAttribute('active', '');
     }
   },
+
   invokeListeners: () => {
     domChanges.addListeners();
   },
+
   navListeners: () => {
     const allProjects = document.querySelectorAll('.projects .project');
     allProjects.forEach((project) => {
@@ -144,7 +153,14 @@ const domChanges = {
       });
     });
   },
+
   addListeners: () => {
+    flatpickr(document.querySelector('#dueDate-id'), {
+      enableTime: true,
+      altInput: true,
+      altFormat: 'F j, Y h:iK',
+      dateFormat: 'Y-m-dTh:i',
+    });
     document.getElementById('formToggle').addEventListener('click', () => {
       document.querySelector('.form-container').classList.remove('d-none');
     });
