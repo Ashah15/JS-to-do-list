@@ -107,8 +107,6 @@
 .right-container .right-info {
   display: flex;
   justify-content: center;
-
-  /* align-items: center; */
   width: 100%;
   min-height: 80%;
 }
@@ -189,4 +187,10 @@
 .todo-section {
   margin-top: 15px;
   margin-bottom: 15px;
+  display: flex;
 }
+
+.todo-section p {
+  margin-right: 2rem;
+}
+
