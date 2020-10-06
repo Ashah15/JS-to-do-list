@@ -50,6 +50,29 @@
   padding: 10px 0;
 }
 
+.toggle > * {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: antiquewhite;
+  cursor: pointer;
+}
+
+#todoForm label > *,
+#projectForm label > * {
+  padding: 8px 15px;
+  margin-top: 10px;
+}
+
+.todoFormButtons.cta-btns button,
+.project-form-buttons.cta-btns button {
+  padding: 5px 10px;
+  background-color: rgb(255, 212, 155);
+  border-radius: 10px;
+  border: none;
+  margin: auto 10px;
+  cursor: pointer;
+}
+
 .cta-btns {
   margin-top: 20px;
 }
@@ -156,13 +179,6 @@
 
 .v-hidden {
   visibility: hidden;
-}
-
-.toggle > * {
-  padding: 5px 10px;
-  border-radius: 10px;
-  background-color: antiquewhite;
-  cursor: pointer;
 }
 
 .todo-section-div {

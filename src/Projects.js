@@ -84,7 +84,8 @@ const Projects = () => {
     projectInput.setAttribute('id', 'addproject');
     projectInput.setAttribute('minlength', '3');
     projectInput.required = true;
-
+    const buttonDiv = document.createElement('div');
+    buttonDiv.classList.add('project-form-buttons', 'cta-btns');
     const submitProjectButton = document.createElement('button');
     submitProjectButton.setAttribute('class', 'btn btn-success save-btn');
     submitProjectButton.innerHTML = 'Submit';
@@ -100,8 +101,9 @@ const Projects = () => {
     });
     projectLabel.appendChild(projectInput);
     projectForm.appendChild(projectLabel);
-    projectForm.appendChild(submitProjectButton);
-    projectForm.appendChild(cancelProjectButton);
+    buttonDiv.appendChild(submitProjectButton);
+    buttonDiv.appendChild(cancelProjectButton);
+    projectForm.appendChild(buttonDiv);
     projectCard.appendChild(projectForm);
     document.querySelector('#content').appendChild(projectCard);
   };
