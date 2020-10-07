@@ -189,7 +189,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst LocalDB = () => {\n  const getItem = (item) => localStorage.getItem(item);\n  const setItem = (name, val) => {\n    localStorage.setItem(name, val);\n  };\n  const getAr = (item) => JSON.parse(localStorage.getItem(item));\n  const setAr = (key, val) => {\n    localStorage.setItem(key, JSON.stringify(val));\n  };\n  const del = (key) => {\n    localStorage.removeItem(key);\n  };\n\n  return {\n    getItem, setItem, getAr, setAr, del,\n  };\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (LocalDB);\n\n//# sourceURL=webpack:///./src/local-storage.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nconst LocalDB = () => {\n  const getItem = (item) => localStorage.getItem(item);\n  const setItem = (name, val) => {\n    localStorage.setItem(name, val);\n    return val;\n  };\n  const getAr = (item) => JSON.parse(localStorage.getItem(item));\n  const setAr = (key, val) => {\n    localStorage.setItem(key, JSON.stringify(val));\n    return val;\n  };\n  const del = (key) => {\n    localStorage.removeItem(key);\n  };\n\n  return {\n    getItem, setItem, getAr, setAr, del,\n  };\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (LocalDB);\n\n//# sourceURL=webpack:///./src/local-storage.js?");
 
 /***/ }),
 
