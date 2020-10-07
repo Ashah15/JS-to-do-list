@@ -157,7 +157,7 @@ const domChanges = {
     const allProjects = document.querySelectorAll('.projects .project');
     allProjects.forEach((project) => {
       project.addEventListener('click', (e) => {
-        const li = e.target.classList.length === 0 ? e.target.parentNode : e.target;
+        const li = [...e.target.classList].includes('project') ? e.target : e.target.parentNode;
         const liAttribute = li.getAttribute('data-info');
         const projectToDoList = {};
         const todos = ldb().getAr('toDoList');
