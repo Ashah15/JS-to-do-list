@@ -89,11 +89,14 @@ const domChanges = {
 
         todoSection.appendChild(todoMetaDiv);
 
-        const editIcon = document.createElement('i');
+        const editIcon = document.createElement('BUTTON');
+        editIcon.innerHTML = 'edit';
         editIcon.setAttribute('class', 'fas fa-edit');
 
-        const deleteIcon = document.createElement('i');
+        const deleteIcon = document.createElement('BUTTON');
+        deleteIcon.innerHTML = 'delete';
         deleteIcon.setAttribute('class', 'fas fa-trash-alt');
+
 
         todoSection.appendChild(editIcon);
         todoSection.appendChild(deleteIcon);
