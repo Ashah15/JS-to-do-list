@@ -221,7 +221,15 @@ const domChanges = {
     });
     document.getElementById('formToggle').addEventListener('click', () => {
       document.querySelector('.form-container').classList.remove('d-none');
-      document.forms.todoForm.reset();
+      const { todoForm } = document.forms;
+      todoForm.reset();
+      const formTitle = todoForm.querySelector('#todoForm h2');
+      formTitle.innerHTML = 'Add new Task';
+      const taskSaveButton = todoForm.querySelector('.save-btn');
+      taskSaveButton.innerHTML = 'save';
+      if (taskSaveButton.getAttribute('data-id')) {
+        taskSaveButton.removeAttribute('data-id');
+      }
     });
     document.querySelector('.form-container').addEventListener('click', (e) => {
       if (e.target.classList[0] === 'form-container') {
