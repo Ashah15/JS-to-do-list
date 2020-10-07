@@ -1,7 +1,8 @@
-// import domchange from './dom-change';
+import domchange from './dom-change';
 import localDB from './local-storage';
 
 const ldb = localDB();
+const domChanges = domchange;
 const projects = ldb.getAr('projectList');
 
 class TodoItem {
@@ -19,7 +20,6 @@ class TodoItem {
     this.project = project;
   }
 }
-const toDoList = ldb.getAr('toDoList') == null ? ldb.setAr('toDoList', []) : ldb.getAr('toDoList');
 
 const toDoPage = () => {
   const getTodo = () => {
@@ -29,12 +29,17 @@ const toDoPage = () => {
     return ldb.getAr('toDoList');
   };
   const updatetoDoList = (todo, dataId) => {
+    const toDoList = ldb.getAr('toDoList');
     if (dataId) {
       toDoList[dataId] = todo;
     } else {
       toDoList.push(todo);
     }
+    domChanges.updateProjectToDoList(toDoList);
     ldb.setAr('toDoList', toDoList);
+    // console.log(domChanges)
+    domChanges.displayToDo(toDoList, todo.project);
+    domChanges.secondRightSection(todo, dataId);
   };
 
   const addTodoLogic = () => {
