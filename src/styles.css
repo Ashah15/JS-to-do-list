@@ -250,6 +250,10 @@
   margin-right: 10px;
 }
 
+.right-section:last-child .btn.btn-primary {
+  margin-right: 10px;
+}
+
 .low-priority {
   padding: 5px 10px;
   background-color: #f2aef8;

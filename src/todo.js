@@ -28,8 +28,12 @@ const toDoPage = () => {
     }
     return ldb.getAr('toDoList');
   };
-  const updatetoDoList = (todo) => {
-    toDoList.push(todo);
+  const updatetoDoList = (todo, dataId) => {
+    if (dataId) {
+      toDoList[dataId] = todo;
+    } else {
+      toDoList.push(todo);
+    }
     ldb.setAr('toDoList', toDoList);
   };
 
@@ -56,7 +60,7 @@ const toDoPage = () => {
             newUserPriority,
             newUserProject,
           );
-          updatetoDoList(newToDo);
+          updatetoDoList(newToDo, e.target.getAttribute('data-id'));
           document.querySelector('.form-container').classList.add('d-none');
           document.forms.todoForm.reset();
           // ldb.getAr('taDoList', getTodo());

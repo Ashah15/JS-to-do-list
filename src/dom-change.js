@@ -114,27 +114,49 @@ const domChanges = {
           todoPriority.classList.add(`${todo.priority}-priority`);
           todoDatePriorityDiv.appendChild(todoPriority);
 
+
+          const editIcon = document.createElement('button');
+          editIcon.innerHTML = 'edit';
+          editIcon.setAttribute('class', 'btn btn-primary fas fa-edit');
+
+          const deleteIcon = document.createElement('button');
+          deleteIcon.innerHTML = 'delete';
+          deleteIcon.setAttribute('class', 'btn btn-danger fas fa-trash-alt');
+
           rightSection.innerHTML = '';
           todoContainer.appendChild(todoTitle);
           todoContainer.appendChild(todoDesc);
           todoContainer.appendChild(todoDatePriorityDiv);
+          todoContainer.appendChild(editIcon);
+          todoContainer.appendChild(deleteIcon);
           rightSection.appendChild(todoContainer);
-
-          const editIcon = document.createElement('BUTTON');
-          editIcon.innerHTML = 'edit';
-          editIcon.setAttribute('class', 'fas fa-edit');
-
-          const deleteIcon = document.createElement('BUTTON');
-          deleteIcon.innerHTML = 'delete';
-          deleteIcon.setAttribute('class', 'fas fa-trash-alt');
-
-
-          rightSection.appendChild(editIcon);
-          rightSection.appendChild(deleteIcon);
+          editIcon.addEventListener('click', () => {
+            const todoForm = document.querySelector('.form-container');
+            todoForm.classList.remove('d-none');
+            const formTitle = todoForm.querySelector('#todoForm h2');
+            formTitle.innerHTML = 'Edit this task';
+            const taskTitle = todoForm.querySelector('#title-id');
+            taskTitle.value = todo.title;
+            const taskDesc = todoForm.querySelector('#description-id');
+            taskDesc.value = todo.description;
+            const taskDate = todoForm.querySelector('#dueDate-id');
+            flatpickr(taskDate, {
+              enableTime: true,
+              altInput: true,
+              altFormat: 'M j, Y h:iK',
+              dateFormat: 'Y-m-dTh:i',
+              defaultDate: todo.dueDate,
+            });
+            const taskPriority = todoForm.querySelector('#priority-id');
+            taskPriority.value = todo.priority;
+            const taskProject = todoForm.querySelector('#project-id');
+            taskProject.value = todo.project;
+            const taskSaveButton = todoForm.querySelector('.save-btn');
+            taskSaveButton.innerHTML = 'update';
+            taskSaveButton.setAttribute('data-id', i);
+          });
         });
       }
-
-
     }
 
     addToDoButton.addEventListener('click', () => {
@@ -199,19 +221,23 @@ const domChanges = {
     });
     document.getElementById('formToggle').addEventListener('click', () => {
       document.querySelector('.form-container').classList.remove('d-none');
+      document.forms.todoForm.reset();
     });
     document.querySelector('.form-container').addEventListener('click', (e) => {
       if (e.target.classList[0] === 'form-container') {
         document.querySelector('.form-container').classList.add('d-none');
+        document.forms.todoForm.reset();
       }
     });
 
     document.getElementById('projectToggle').addEventListener('click', () => {
       document.querySelector('.project-module').classList.remove('d-none');
+      document.forms.projectForm.reset();
     });
     document.querySelector('.project-module').addEventListener('click', (e) => {
       if (e.target.classList[0] === 'project-module') {
         document.querySelector('.project-module').classList.add('d-none');
+        document.forms.projectForm.reset();
       }
     });
     domChanges.navListeners();
