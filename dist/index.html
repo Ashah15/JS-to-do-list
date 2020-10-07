@@ -8,7 +8,10 @@
       href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap"
       rel="stylesheet"
     />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <title>ToDo List</title>
   </head>
@@ -39,28 +42,42 @@
           <h2>Create a new Event</h2>
           <label>
             Title:
-            <input id="title-id"  type="text" name="title" required />
+            <input id="title-id" type="text" name="title" required />
           </label>
           <label>
             Description:
-            <textarea id="description-id" name="description" cols="30" rows="10" required></textarea>
+            <textarea
+              id="description-id"
+              name="description"
+              cols="30"
+              rows="10"
+              required
+            ></textarea>
           </label>
-          <label>
+          <label data-item="duedate">
             Due Date/time:
-            <input id="dueDate-id" type="text" name="date" placeholder="Select Date/Time..." required />
+            <input
+              id="dueDate-id"
+              type="text"
+              name="date"
+              placeholder="Select Date/Time..."
+              required
+            />
           </label>
-          <label>
-            Priority
-            <select name="priority" id="priority-id" required>
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
-            </select>
-          </label>
-          <label>
-            Projects:
-            <select id="project-id" name="project" required></select>
-          </label>
+          <div class="priority-project-options">
+            <label>
+              Priority
+              <select name="priority" id="priority-id" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+            <label>
+              Projects:
+              <select id="project-id" name="project" required></select>
+            </label>
+          </div>
 
           <div class="todoFormButtons cta-btns">
             <button class="save-btn">Save</button>

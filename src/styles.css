@@ -35,6 +35,10 @@
   border-radius: 10px;
 }
 
+.priority-project-options label:first-child {
+  margin-right: 10px;
+}
+
 #todoForm,
 #todoForm label,
 #projectForm,
@@ -50,6 +54,10 @@
   padding: 10px 0;
 }
 
+#todoForm .priority-project-options {
+  display: flex;
+}
+
 .toggle > * {
   padding: 5px 10px;
   border-radius: 10px;
@@ -61,6 +69,18 @@
 #projectForm label > * {
   padding: 8px 15px;
   margin-top: 10px;
+}
+
+#todoForm textarea {
+  height: 130px;
+}
+
+#todoForm label[data-item="duedate"] {
+  pointer-events: none;
+}
+
+#todoForm label[data-item="duedate"] input {
+  pointer-events: all;
 }
 
 .todoFormButtons.cta-btns button,
