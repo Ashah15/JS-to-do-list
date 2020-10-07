@@ -130,6 +130,7 @@ const domChanges = {
           todoContainer.appendChild(editIcon);
           todoContainer.appendChild(deleteIcon);
           rightSection.appendChild(todoContainer);
+
           editIcon.addEventListener('click', () => {
             const todoForm = document.querySelector('.form-container');
             todoForm.classList.remove('d-none');
@@ -154,6 +155,17 @@ const domChanges = {
             const taskSaveButton = todoForm.querySelector('.save-btn');
             taskSaveButton.innerHTML = 'update';
             taskSaveButton.setAttribute('data-id', i);
+          });
+
+          deleteIcon.addEventListener('click', () => {
+            if (confirm('are you sure you want to delete this task?')) {
+              const toDoList = ldb().getAr('toDoList');
+              const index = toDoList.findIndex((task) => task.title === todo.title
+                  && task.description === todo.description
+                  && task.dueDate === todo.dueDate);
+              toDoList.splice(index, 1);
+              ldb().setAr('toDoList', toDoList);
+            }
           });
         });
       }
