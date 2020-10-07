@@ -28,13 +28,17 @@ const domChanges = {
 
   projectListRightInfo: (projectList) => {
     const rightSection = document.querySelector('.right-info .right-section:first-child');
-    let projectDOM = '';
+    rightSection.innerHTML = '';
+    const projectsTitle = rightSection.appendChild(document.createElement('h2'));
+    projectsTitle.innerHTML = 'Projects';
     projectList.forEach((project) => {
-      projectDOM += `
-        <h4>${project}</h4>
-      `;
+      const projectTitle = rightSection.appendChild(document.createElement('h4'));
+      projectTitle.innerHTML = project;
+      projectTitle.addEventListener('click', () => {
+        const rightSection = document.querySelector('.right-info .right-section:last-child');
+        rightSection.classList.remove('v-hidden');
+      });
     });
-    rightSection.innerHTML = projectDOM;
   },
 
   displayToDo: (toDoList, title) => {

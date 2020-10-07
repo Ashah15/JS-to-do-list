@@ -11,7 +11,6 @@
 .logo {
   color: #b83b5e;
   font-family: "Oleo Script", cursive;
-  font-size: 3rem;
 }
 
 .form-container,
@@ -183,15 +182,6 @@
   padding-right: 10px;
 }
 
-.projects .project:hover h4,
-.projects .project:hover span,
-.projects .project[active] h4,
-.projects .project[active] span,
-#formToggle:hover,
-#projectToggle:hover {
-  color: antiquewhite;
-}
-
 .right-container {
   width: 70%;
 }
@@ -208,12 +198,27 @@
   margin: 30px auto;
 }
 
-.todo-section {
+.todo-section,
+.right-section:first-child h4 {
   margin: 15px auto;
   background-color: rgb(255, 212, 155);
   padding: 10px 30px 0;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.right-section:first-child h4 {
+  padding: 15px 30px;
+  margin: 10px auto;
+}
+
+.projects .project:hover h4,
+.projects .project:hover span,
+.projects .project[active] h4,
+.projects .project[active] span,
+#formToggle:hover,
+#projectToggle:hover {
+  color: antiquewhite;
 }
 
 .todo-section .todo-item-meta {
