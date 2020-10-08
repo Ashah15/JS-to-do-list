@@ -17,6 +17,19 @@ const domChanges = {
     document.querySelector('.projects').innerHTML = project;
   },
 
+  updateProjectToDoList: () => {
+    const projectToDoList = {};
+    const todos = ldb().getAr('toDoList');
+    todos.forEach((obj) => {
+      if (projectToDoList[obj.project]) {
+        projectToDoList[obj.project].push(obj);
+      } else {
+        projectToDoList[obj.project] = [obj];
+      }
+    });
+    ldb().setAr('projectToDoList', projectToDoList);
+  },
+
   projectOptions: (projects) => {
     const formProject = document.forms.todoForm.project;
     let projectOptions = '';
@@ -86,6 +99,20 @@ const domChanges = {
       cancelButton.setAttribute('class', 'btn btn-success cancel-btn');
       cancelButton.innerHTML = 'Cancel';
       cancelButton.addEventListener('click', () => {
+        editContainer.classList.add('d-none');
+      });
+
+      deleteButton.addEventListener('click', () => {
+        const projectList = ldb().getAr('projectList');
+        projectList.splice(i, 1);
+        ldb().setAr('projectList', projectList);
+        domChanges.updateProjectToDoList();
+        domChanges.projectListRightInfo(projectList);
+        domChanges.projectListNav(projectList);
+        domChanges.navListeners();
+        const lastDiv = document.querySelector('.right-info .right-section:last-child');
+        lastDiv.classList.add('v-hidden');
+        lastDiv.innerHTML = '';
         editContainer.classList.add('d-none');
       });
 
@@ -312,19 +339,6 @@ const domChanges = {
 
   invokeListeners: () => {
     domChanges.addListeners();
-  },
-
-  updateProjectToDoList: () => {
-    const projectToDoList = {};
-    const todos = ldb().getAr('toDoList');
-    todos.forEach((obj) => {
-      if (projectToDoList[obj.project]) {
-        projectToDoList[obj.project].push(obj);
-      } else {
-        projectToDoList[obj.project] = [obj];
-      }
-    });
-    ldb().setAr('projectToDoList', projectToDoList);
   },
 
   navListeners: () => {
