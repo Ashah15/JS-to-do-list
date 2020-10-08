@@ -257,7 +257,8 @@ const domChanges = {
         rightSection.innerHTML = '';
         rightSection.classList.add('v-hidden');
         containerDiv.classList.add('d-none');
-        domChanges.displayToDo(toDoList, todo.project);
+        const projectTodoList = ldb().getAr('projectToDoList');
+        domChanges.displayToDo(projectTodoList[todo.project], todo.project);
       });
 
       cancelButton.addEventListener('click', () => {

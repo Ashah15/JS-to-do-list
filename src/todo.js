@@ -35,10 +35,11 @@ const toDoPage = () => {
     } else {
       toDoList.push(todo);
     }
-    domChanges.updateProjectToDoList(toDoList);
     ldb.setAr('toDoList', toDoList);
+    domChanges.updateProjectToDoList(toDoList);
     // console.log(domChanges)
-    domChanges.displayToDo(toDoList, todo.project);
+    const customProjectList = ldb.getAr('projectToDoList');
+    domChanges.displayToDo(customProjectList[todo.project], todo.project);
     domChanges.secondRightSection(todo, dataId);
     document.forms.todoForm.reset();
   };
