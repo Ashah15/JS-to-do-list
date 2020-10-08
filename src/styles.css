@@ -14,7 +14,8 @@
 }
 
 .form-container,
-.project-module {
+.project-module,
+.window-container {
   width: 100%;
   position: absolute;
   height: 100vh;
@@ -27,15 +28,21 @@
 }
 
 #todoForm,
-#projectForm {
+#projectForm,
+.window-container .confirm-dialogue {
   position: relative;
   background-color: #fff;
   padding: 30px;
   border-radius: 10px;
 }
 
-.priority-project-options label:first-child {
+.priority-project-options label:first-child,
+.window-container button:first-child {
   margin-right: 10px;
+}
+
+.window-container .confirm-dialogue-buttons {
+  text-align: center;
 }
 
 #todoForm,

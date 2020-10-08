@@ -106,11 +106,44 @@ const domChanges = {
     });
 
     deleteIcon.addEventListener('click', () => {
-      if (confirm('are you sure you want to delete this task?')) {
+      let containerDiv;
+      if (document.querySelector('.window-container')) {
+        containerDiv = document.querySelector('.window-container');
+        containerDiv.innerHTML = '';
+        if ([...containerDiv.classList].includes('d-none')) {
+          containerDiv.classList.remove('d-none');
+        }
+      } else {
+        containerDiv = document.createElement('div');
+        containerDiv.classList.add('window-container');
+      }
+      const confirmForm = document.createElement('div');
+      confirmForm.className = 'confirm-dialogue';
+      const confirmFormH2 = document.createElement('h2');
+      const confirmFormTitle = document.createTextNode('Are you sure you want to delete this Task?');
+      confirmFormH2.appendChild(confirmFormTitle);
+      confirmForm.appendChild(confirmFormH2);
+
+      const buttonDiv = document.createElement('div');
+      buttonDiv.classList.add('confirm-dialogue-buttons', 'cta-btns');
+      const deleteButton = document.createElement('button');
+      deleteButton.setAttribute('class', 'btn btn-danger save-btn');
+      deleteButton.innerHTML = 'Delete';
+
+      const cancelButton = document.createElement('button');
+      cancelButton.setAttribute('class', 'btn btn-success cancel-btn');
+      cancelButton.innerHTML = 'Cancel';
+
+      buttonDiv.appendChild(deleteButton);
+      buttonDiv.appendChild(cancelButton);
+      confirmForm.appendChild(buttonDiv);
+      containerDiv.appendChild(confirmForm);
+
+      deleteButton.addEventListener('click', () => {
         const toDoList = ldb().getAr('toDoList');
         const index = toDoList.findIndex((task) => task.title === todo.title
-            && task.description === todo.description
-            && task.dueDate === todo.dueDate);
+          && task.description === todo.description
+          && task.dueDate === todo.dueDate);
         toDoList.splice(index, 1);
         ldb().setAr('toDoList', toDoList);
         domChanges.updateProjectToDoList();
@@ -121,7 +154,12 @@ const domChanges = {
         } else {
           rightSection.classList.add('v-hidden');
         }
-      }
+      });
+
+      cancelButton.addEventListener('click', () => {
+        containerDiv.classList.add('d-none');
+      });
+      document.getElementById('content').appendChild(containerDiv);
     });
   },
 
