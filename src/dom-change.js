@@ -147,13 +147,8 @@ const domChanges = {
         toDoList.splice(index, 1);
         ldb().setAr('toDoList', toDoList);
         domChanges.updateProjectToDoList();
-        if (ldb().getAr('projectToDoList')[todo.project][i - 1]) {
-          todo = ldb().getAr('projectToDoList')[todo.project][i - 1];
-          display[0](toDoList, todo.project);
-          domChanges.secondRightSection(todo, i - 1);
-        } else {
           rightSection.classList.add('v-hidden');
-        }
+          rightSection.innerHTML = '';
       });
 
       cancelButton.addEventListener('click', () => {
