@@ -19,12 +19,18 @@ const domChanges = {
 
   updateProjectToDoList: () => {
     const projectToDoList = {};
+    const projectList = ldb().getAr('projectList');
     const todos = ldb().getAr('toDoList');
-    todos.forEach((obj) => {
-      if (projectToDoList[obj.project]) {
-        projectToDoList[obj.project].push(obj);
+    todos.forEach((obj, i) => {
+      if (projectList.includes(obj.project)) {
+        if (projectToDoList[obj.project]) {
+          projectToDoList[obj.project].push(obj);
+        } else {
+          projectToDoList[obj.project] = [obj];
+        }
       } else {
-        projectToDoList[obj.project] = [obj];
+        todos.splice(i, 1);
+        ldb().setAr('toDoList', todos);
       }
     });
     ldb().setAr('projectToDoList', projectToDoList);
@@ -315,7 +321,7 @@ const domChanges = {
 
         toDoSectionMainDiv.appendChild(todoSection);
         todoSection.addEventListener('click', () => {
-          domChanges.secondRightSection(todo, i, domChanges.displayToDo);
+          domChanges.secondRightSection(todo, i);
         });
       }
     }
