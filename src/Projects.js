@@ -3,10 +3,10 @@ import localDB from './local-storage';
 
 const ldb = localDB();
 
-const projectList = ldb.getAr('projectList') == null ? ldb.setAr('projectList', ['Default']) : ldb.getAr('projectList');
 class TodoProject {
   constructor(name = 'Default') {
     this.name = name;
+    const projectList = ldb.getAr('projectList');
     projectList.push(name);
     ldb.setAr('projectList', projectList);
   }
@@ -21,6 +21,7 @@ const Projects = () => {
   const insertProject = (projectName) => {
     // eslint-disable-next-line no-unused-vars
     const newProject = new TodoProject(projectName);
+    const projectList = ldb.getAr('projectList');
     domchange.projectListNav(projectList);
     domchange.projectOptions(projectList);
   };
@@ -62,6 +63,7 @@ const Projects = () => {
     if (document.forms.projectForm.reportValidity()) {
       const newProjectName = document.querySelector('#addproject').value;
       const dataUpdate = e.target.getAttribute('data-update');
+      const projectList = ldb.getAr('projectList');
       if (dataUpdate) {
         projectList[dataUpdate] = newProjectName;
         e.target.removeAttribute('data-update');

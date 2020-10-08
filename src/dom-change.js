@@ -20,7 +20,11 @@ const domChanges = {
   updateProjectToDoList: () => {
     const projectToDoList = {};
     const projectList = ldb().getAr('projectList');
-    const todos = ldb().getAr('toDoList');
+    let todos = ldb().getAr('toDoList');
+    if (!todos) {
+      ldb().setAr('toDoList', []);
+      todos = [];
+    }
     todos.forEach((obj, i) => {
       if (projectList.includes(obj.project)) {
         if (projectToDoList[obj.project]) {
@@ -209,7 +213,8 @@ const domChanges = {
       taskProject.value = todo.project;
       const taskSaveButton = todoForm.querySelector('.save-btn');
       taskSaveButton.innerHTML = 'update';
-      taskSaveButton.setAttribute('data-id', i);
+      taskSaveButton.setAttribute('data-id', todo.id);
+      taskSaveButton.setAttribute('data-task-id', i);
     });
 
     deleteIcon.addEventListener('click', () => {
@@ -248,7 +253,7 @@ const domChanges = {
 
       deleteButton.addEventListener('click', () => {
         const toDoList = ldb().getAr('toDoList');
-        const index = toDoList.findIndex((task) => task.title === todo.title
+        const index = toDoList.findIndex((task) => task.id === todo.id
           && task.description === todo.description
           && task.dueDate === todo.dueDate);
         toDoList.splice(index, 1);
@@ -257,7 +262,8 @@ const domChanges = {
         rightSection.innerHTML = '';
         rightSection.classList.add('v-hidden');
         containerDiv.classList.add('d-none');
-        domChanges.displayToDo(toDoList, todo.project);
+        const projectTodoList = ldb().getAr('projectToDoList');
+        domChanges.displayToDo(projectTodoList[todo.project], todo.project);
       });
 
       cancelButton.addEventListener('click', () => {
@@ -329,6 +335,16 @@ const domChanges = {
     addToDoButton.addEventListener('click', () => {
       document.querySelector('.form-container').classList.remove('d-none');
       const projectList = ldb().getAr('projectList');
+      const { todoForm } = document.forms;
+      todoForm.reset();
+      const formTitle = todoForm.querySelector('#todoForm h2');
+      formTitle.innerHTML = 'Add new Task';
+      const taskSaveButton = todoForm.querySelector('.save-btn');
+      taskSaveButton.innerHTML = 'save';
+      if (taskSaveButton.getAttribute('data-id')) {
+        taskSaveButton.removeAttribute('data-id');
+        taskSaveButton.removeAttribute('data-task-id');
+      }
       document.getElementById('project-id').options[projectList.indexOf(title)].setAttribute('selected', '');
     });
   },
@@ -388,6 +404,7 @@ const domChanges = {
       taskSaveButton.innerHTML = 'save';
       if (taskSaveButton.getAttribute('data-id')) {
         taskSaveButton.removeAttribute('data-id');
+        taskSaveButton.removeAttribute('data-task-id');
       }
     });
 

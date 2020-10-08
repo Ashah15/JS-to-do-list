@@ -12,6 +12,7 @@ class TodoItem {
     dueDateText,
     priority = 'low',
     project = projects[0]) {
+    this.id = ldb.getAr('toDoList').length;
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
@@ -28,18 +29,15 @@ const toDoPage = () => {
     }
     return ldb.getAr('toDoList');
   };
-  const updatetoDoList = (todo, dataId) => {
+  const updatetoDoList = (todo) => {
     const toDoList = ldb.getAr('toDoList');
-    if (dataId) {
-      toDoList[dataId] = todo;
-    } else {
-      toDoList.push(todo);
-    }
-    domChanges.updateProjectToDoList(toDoList);
+    toDoList.push(todo);
     ldb.setAr('toDoList', toDoList);
+    domChanges.updateProjectToDoList();
     // console.log(domChanges)
-    domChanges.displayToDo(toDoList, todo.project);
-    domChanges.secondRightSection(todo, dataId);
+    const customProjectList = ldb.getAr('projectToDoList');
+    domChanges.displayToDo(customProjectList[todo.project], todo.project);
+    domChanges.secondRightSection(todo, todo.id);
     document.forms.todoForm.reset();
   };
 
@@ -66,7 +64,20 @@ const toDoPage = () => {
             newUserPriority,
             newUserProject,
           );
-          updatetoDoList(newToDo, e.target.getAttribute('data-id'));
+          if (e.target.getAttribute('data-id')) {
+            const toDoList = ldb.getAr('toDoList');
+            newToDo.id = e.target.getAttribute('data-id');
+            toDoList[newToDo.id] = newToDo;
+            ldb.setAr('toDoList', toDoList);
+            domChanges.updateProjectToDoList();
+            // console.log(domChanges)
+            const customProjectList = ldb.getAr('projectToDoList');
+            domChanges.displayToDo(customProjectList[newToDo.project], newToDo.project);
+            domChanges.secondRightSection(newToDo, e.target.getAttribute('data-task-id'));
+            document.forms.todoForm.reset();
+          } else {
+            updatetoDoList(newToDo);
+          }
           document.querySelector('.form-container').classList.add('d-none');
           document.forms.todoForm.reset();
           // ldb.getAr('taDoList', getTodo());
