@@ -17,6 +17,25 @@ const domChanges = {
     document.querySelector('.projects').innerHTML = project;
   },
 
+  updateProjectToDoList: () => {
+    const projectToDoList = {};
+    const projectList = ldb().getAr('projectList');
+    const todos = ldb().getAr('toDoList');
+    todos.forEach((obj, i) => {
+      if (projectList.includes(obj.project)) {
+        if (projectToDoList[obj.project]) {
+          projectToDoList[obj.project].push(obj);
+        } else {
+          projectToDoList[obj.project] = [obj];
+        }
+      } else {
+        todos.splice(i, 1);
+        ldb().setAr('toDoList', todos);
+      }
+    });
+    ldb().setAr('projectToDoList', projectToDoList);
+  },
+
   projectOptions: (projects) => {
     const formProject = document.forms.todoForm.project;
     let projectOptions = '';
@@ -26,17 +45,105 @@ const domChanges = {
     formProject.innerHTML = projectOptions;
   },
 
+  projectSecondRightInfo: (project, i) => {
+    const secondRightSection = document.querySelector('.right-info .right-section:last-child');
+    secondRightSection.innerHTML = '';
+    secondRightSection.classList.remove('v-hidden');
+    const projectContainer = document.createElement('div');
+    projectContainer.classList.add('todo-container');
+    const projectTitle = document.createElement('h2');
+    projectTitle.innerHTML = project;
+    projectContainer.appendChild(projectTitle);
+    secondRightSection.appendChild(projectContainer);
+    const buttonDiv = document.createElement('div');
+    buttonDiv.classList.add('confirm-dialogue-buttons', 'cta-btns');
+    const editIcon = document.createElement('button');
+    editIcon.innerHTML = 'edit';
+    editIcon.setAttribute('class', 'btn btn-primary fas fa-edit');
+
+    const deleteIcon = document.createElement('button');
+    deleteIcon.innerHTML = 'delete';
+    deleteIcon.setAttribute('class', 'btn btn-danger fas fa-trash-alt');
+
+    editIcon.addEventListener('click', () => {
+      document.querySelector('.project-module').classList.remove('d-none');
+      document.forms.projectForm.reset();
+      document.forms.projectForm.querySelector('h2').innerHTML = 'Update Project:';
+      const updateProjectName = document.querySelector('#addproject');
+      updateProjectName.value = project;
+      const updateButton = document.forms.projectForm.querySelector('.btn.btn-success.save-btn');
+      updateButton.innerHTML = 'update';
+      updateButton.setAttribute('data-update', i);
+    });
+
+    deleteIcon.addEventListener('click', () => {
+      let editContainer;
+      if (document.querySelector('.window-container')) {
+        editContainer = document.querySelector('.window-container');
+        editContainer.innerHTML = '';
+        if ([...editContainer.classList].includes('d-none')) {
+          editContainer.classList.remove('d-none');
+        }
+      } else {
+        editContainer = document.createElement('div');
+        editContainer.classList.add('window-container');
+      }
+      const confirmForm = document.createElement('div');
+      confirmForm.className = 'confirm-dialogue';
+      const confirmFormH2 = document.createElement('h2');
+      const confirmFormTitle = document.createTextNode('Are you sure you want to delete this Project?');
+      confirmFormH2.appendChild(confirmFormTitle);
+      confirmForm.appendChild(confirmFormH2);
+
+      const buttonDiv = document.createElement('div');
+      buttonDiv.classList.add('confirm-dialogue-buttons', 'cta-btns');
+      const deleteButton = document.createElement('button');
+      deleteButton.setAttribute('class', 'btn btn-danger save-btn');
+      deleteButton.innerHTML = 'Delete';
+
+      const cancelButton = document.createElement('button');
+      cancelButton.setAttribute('class', 'btn btn-success cancel-btn');
+      cancelButton.innerHTML = 'Cancel';
+      cancelButton.addEventListener('click', () => {
+        editContainer.classList.add('d-none');
+      });
+
+      deleteButton.addEventListener('click', () => {
+        const projectList = ldb().getAr('projectList');
+        projectList.splice(i, 1);
+        ldb().setAr('projectList', projectList);
+        domChanges.updateProjectToDoList();
+        domChanges.projectListRightInfo(projectList);
+        domChanges.projectListNav(projectList);
+        domChanges.navListeners();
+        const lastDiv = document.querySelector('.right-info .right-section:last-child');
+        lastDiv.classList.add('v-hidden');
+        lastDiv.innerHTML = '';
+        editContainer.classList.add('d-none');
+      });
+
+      buttonDiv.appendChild(deleteButton);
+      buttonDiv.appendChild(cancelButton);
+      confirmForm.appendChild(buttonDiv);
+      editContainer.appendChild(confirmForm);
+      document.getElementById('content').appendChild(editContainer);
+    });
+    buttonDiv.appendChild(editIcon);
+    buttonDiv.appendChild(deleteIcon);
+    secondRightSection.appendChild(buttonDiv);
+  },
+
   projectListRightInfo: (projectList) => {
     const rightSection = document.querySelector('.right-info .right-section:first-child');
     rightSection.innerHTML = '';
     const projectsTitle = rightSection.appendChild(document.createElement('h2'));
     projectsTitle.innerHTML = 'Projects';
-    projectList.forEach((project) => {
-      const projectTitle = rightSection.appendChild(document.createElement('h4'));
+    projectList.forEach((project, i) => {
+      const projectTitle = document.createElement('h4');
+      rightSection.appendChild(projectTitle);
       projectTitle.innerHTML = project;
       projectTitle.addEventListener('click', () => {
-        const rightSection = document.querySelector('.right-info .right-section:last-child');
-        rightSection.classList.remove('v-hidden');
+        domChanges.projectSecondRightInfo(project, i);
       });
     });
   },
@@ -131,7 +238,7 @@ const domChanges = {
       deleteButton.innerHTML = 'Delete';
 
       const cancelButton = document.createElement('button');
-      cancelButton.setAttribute('class', 'btn btn-success cancel-btn');
+      cancelButton.setAttribute('class', 'btn btn-success cancel-btn a');
       cancelButton.innerHTML = 'Cancel';
 
       buttonDiv.appendChild(deleteButton);
@@ -214,7 +321,7 @@ const domChanges = {
 
         toDoSectionMainDiv.appendChild(todoSection);
         todoSection.addEventListener('click', () => {
-          domChanges.secondRightSection(todo, i, domChanges.displayToDo);
+          domChanges.secondRightSection(todo, i);
         });
       }
     }
@@ -238,19 +345,6 @@ const domChanges = {
 
   invokeListeners: () => {
     domChanges.addListeners();
-  },
-
-  updateProjectToDoList: () => {
-    const projectToDoList = {};
-    const todos = ldb().getAr('toDoList');
-    todos.forEach((obj) => {
-      if (projectToDoList[obj.project]) {
-        projectToDoList[obj.project].push(obj);
-      } else {
-        projectToDoList[obj.project] = [obj];
-      }
-    });
-    ldb().setAr('projectToDoList', projectToDoList);
   },
 
   navListeners: () => {

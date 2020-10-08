@@ -61,7 +61,20 @@ const Projects = () => {
     e.preventDefault();
     if (document.forms.projectForm.reportValidity()) {
       const newProjectName = document.querySelector('#addproject').value;
-      insertProject(newProjectName);
+      const dataUpdate = e.target.getAttribute('data-update');
+      if (dataUpdate) {
+        projectList[dataUpdate] = newProjectName;
+        e.target.removeAttribute('data-update');
+        ldb.setAr('projectList', projectList);
+        domchange.projectListNav(projectList);
+        domchange.projectOptions(projectList);
+        e.target.innerHTML = 'save';
+        document.forms.projectForm.querySelector('h2').innerHTML = 'Enter the Project Name:';
+        domchange.projectSecondRightInfo(projectList[dataUpdate], dataUpdate);
+      } else {
+        insertProject(newProjectName);
+      }
+      domchange.projectListRightInfo(projectList);
       document.querySelector('.project-module').classList.add('d-none');
       document.forms.projectForm.reset();
     }
@@ -97,6 +110,9 @@ const Projects = () => {
     submitProjectButton.addEventListener('click', addToProjectList);
     cancelProjectButton.addEventListener('click', (e) => {
       e.preventDefault();
+      document.forms.projectForm.querySelector('h2').innerHTML = 'Enter the Project Name:';
+      submitProjectButton.innerHTML = 'Submit';
+      submitProjectButton.removeAttribute('data-update');
       document.querySelector('.project-module').classList.add('d-none');
     });
     projectLabel.appendChild(projectInput);
