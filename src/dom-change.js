@@ -41,7 +41,7 @@ const domChanges = {
     });
   },
 
-  secondRightSection: (todo, i, ...display) => {
+  secondRightSection: (todo, i) => {
     const rightSection = document.querySelector('.right-info .right-section:last-child');
     rightSection.classList.remove('v-hidden');
     const todoContainer = document.createElement('div');
@@ -147,13 +147,10 @@ const domChanges = {
         toDoList.splice(index, 1);
         ldb().setAr('toDoList', toDoList);
         domChanges.updateProjectToDoList();
-        if (ldb().getAr('projectToDoList')[todo.project][i - 1]) {
-          todo = ldb().getAr('projectToDoList')[todo.project][i - 1];
-          display[0](toDoList, todo.project);
-          domChanges.secondRightSection(todo, i - 1);
-        } else {
-          rightSection.classList.add('v-hidden');
-        }
+        rightSection.innerHTML = '';
+        rightSection.classList.add('v-hidden');
+        containerDiv.classList.add('d-none');
+        domChanges.displayToDo(toDoList, todo.project);
       });
 
       cancelButton.addEventListener('click', () => {
@@ -270,8 +267,10 @@ const domChanges = {
           const customProjectList = ldb().getAr('projectToDoList');
           domChanges.displayToDo(customProjectList[liAttribute], liAttribute);
         }
-        if (![...document.querySelector('.right-info .right-section:last-child').classList].includes('v-hidden')) {
+        const rightSection = document.querySelector('.right-info .right-section:last-child');
+        if (![...rightSection.classList].includes('v-hidden')) {
           document.querySelector('.right-info .right-section:last-child').classList.add('v-hidden');
+          rightSection.innerHTML = '';
         }
         domChanges.changeNavCurrentActive(li);
       });

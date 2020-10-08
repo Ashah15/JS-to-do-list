@@ -17,7 +17,7 @@
 .project-module,
 .window-container {
   width: 100%;
-  position: absolute;
+  position: fixed;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.514);
   display: flex;
