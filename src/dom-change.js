@@ -20,7 +20,11 @@ const domChanges = {
   updateProjectToDoList: () => {
     const projectToDoList = {};
     const projectList = ldb().getAr('projectList');
-    const todos = ldb().getAr('toDoList');
+    let todos = ldb().getAr('toDoList');
+    if (!todos) {
+      ldb().setAr('toDoList', []);
+      todos = [];
+    }
     todos.forEach((obj, i) => {
       if (projectList.includes(obj.project)) {
         if (projectToDoList[obj.project]) {
