@@ -40,6 +40,7 @@ const toDoPage = () => {
     // console.log(domChanges)
     domChanges.displayToDo(toDoList, todo.project);
     domChanges.secondRightSection(todo, dataId);
+    document.forms.todoForm.reset();
   };
 
   const addTodoLogic = () => {
