@@ -147,15 +147,10 @@ const domChanges = {
         toDoList.splice(index, 1);
         ldb().setAr('toDoList', toDoList);
         domChanges.updateProjectToDoList();
-<<<<<<< HEAD
-          rightSection.classList.add('v-hidden');
-          rightSection.innerHTML = '';
-=======
         rightSection.innerHTML = '';
         rightSection.classList.add('v-hidden');
         containerDiv.classList.add('d-none');
         domChanges.displayToDo(toDoList, todo.project);
->>>>>>> 670a7315e9c913b0f76f0235ae11a717ce77a754
       });
 
       cancelButton.addEventListener('click', () => {
