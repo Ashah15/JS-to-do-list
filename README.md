@@ -10,7 +10,7 @@
 - HTML,
 - JAVASCRIPT,
 - CSS,
-- BOOSTRAP,
+- BOOTSRAP,
 - flatpickr
 
 ## Live Demo
