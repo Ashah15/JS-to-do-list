@@ -6,9 +6,6 @@ const ldb = localDB();
 class TodoProject {
   constructor(name = 'Default') {
     this.name = name;
-    const projectList = ldb.getAr('projectList');
-    projectList.push(name);
-    ldb.setAr('projectList', projectList);
   }
 }
 const Projects = () => {
@@ -21,6 +18,8 @@ const Projects = () => {
   const insertProject = (projectName) => {
     const newProject = new TodoProject(projectName);
     const projectList = ldb.getAr('projectList');
+    projectList.push(newProject);
+    ldb.setAr('projectList', projectList);
     domchange.projectListNav(projectList);
     domchange.projectOptions(projectList);
   };

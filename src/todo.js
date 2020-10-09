@@ -34,7 +34,6 @@ const toDoPage = () => {
     toDoList.push(todo);
     ldb.setAr('toDoList', toDoList);
     domChanges.updateProjectToDoList();
-    
     const customProjectList = ldb.getAr('projectToDoList');
     domChanges.displayToDo(customProjectList[todo.project], todo.project);
     domChanges.secondRightSection(todo, todo.id);
@@ -80,7 +79,6 @@ const toDoPage = () => {
           }
           document.querySelector('.form-container').classList.add('d-none');
           document.forms.todoForm.reset();
-          
         }
       }
     });

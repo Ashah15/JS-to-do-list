@@ -4,7 +4,6 @@
 
 ![list](https://user-images.githubusercontent.com/25789605/95614498-48905c00-0a6f-11eb-808e-f41bf8466d9a.png)
 
-Additional description about the project and its features.
 
 ## Built With
 
@@ -42,14 +41,14 @@ Run npm run build when you want to deploy the project for production.
 
 👤 **Asha Abdullahi**
 
-- [@github](https://github.com/Ashah15)
-- [@twitter](https://twitter.com/AshaAbdullahi13)
-- [linkedin](https://www.linkedin.com/in/ashaabdullahi/)
+- [Github](https://github.com/Ashah15)
+- [Twitter](https://twitter.com/AshaAbdullahi13)
+- [Linkedin](https://www.linkedin.com/in/ashaabdullahi/)
 
 👤 **Moin Khan**
 
-- [@github](https://github.com/moinkhanif)
-- [linkedin](https://www.linkedin.com/in/moinkhanif/)
+- [Github](https://github.com/moinkhanif)
+- [Linkedin](https://www.linkedin.com/in/moinkhanif/)
 - [Portfolio]( https://moinkhanif.dev)
 
 ## 🤝 Contributing
