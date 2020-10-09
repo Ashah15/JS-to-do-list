@@ -18,7 +18,7 @@ const Projects = () => {
   const insertProject = (projectName) => {
     const newProject = new TodoProject(projectName);
     const projectList = ldb.getAr('projectList');
-    projectList.push(newProject);
+    projectList.push(newProject.name);
     ldb.setAr('projectList', projectList);
     domchange.projectListNav(projectList);
     domchange.projectOptions(projectList);
