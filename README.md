@@ -11,7 +11,7 @@
 - JAVASCRIPT,
 - CSS,
 - BOOSTRAP,
-- FLICKER
+- flatpickr
 
 ## Live Demo
 
@@ -27,15 +27,15 @@ Clone or download the repository to your local machine
 
 ### Install
 
-Run npm installto install the project packages
+Run `npm install` to install the project packages
 
 Ensure that you have node.js and npm installed in your machine.
 
 ### Usage
 
-Run npm run devto bundle the packages for development. 
+Run `npm run dev` to bundle the packages for development. 
 
-Run npm run build when you want to deploy the project for production.
+Run `npm run build` when you want to deploy the project for production.
 
 ## Authors
 
@@ -49,7 +49,7 @@ Run npm run build when you want to deploy the project for production.
 
 - [Github](https://github.com/moinkhanif)
 - [Linkedin](https://www.linkedin.com/in/moinkhanif/)
-- [Portfolio]( https://moinkhanif.dev)
+- [Portfolio](https://moinkhanif.dev)
 
 ## 🤝 Contributing
 
