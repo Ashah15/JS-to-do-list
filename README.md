@@ -1,59 +1,55 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+# JS-Todo List
 
-# Project Name
+> A simple to-do list app which allows the user to create a project and assign task to it with the addition of edit and delete functionality. This simplifies one's day to day schedule and acts as a reminder.
 
-> One paragraph statement about the project.
+![list](https://user-images.githubusercontent.com/25789605/95614498-48905c00-0a6f-11eb-808e-f41bf8466d9a.png)
 
-![screenshot](./app_screenshot.png)
-
-Additional description about the project and its features.
 
 ## Built With
 
-- Major languages,
-- frameworks,
-- technologies used
+- HTML,
+- JAVASCRIPT,
+- CSS,
+- BOOTSRAP,
+- flatpickr
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
-
-
-## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
+[Live Link](https://elated-franklin-4de9bd.netlify.app/)
 
 ### Prerequisites
 
+ Browser supporting CSS3 and HTML5
+
 ### Setup
+
+Clone or download the repository to your local machine
 
 ### Install
 
+Run `npm install` to install the project packages
+
+Ensure that you have node.js and npm installed in your machine.
+
 ### Usage
 
-### Run tests
+Run `npm run dev` to bundle the packages for development. 
 
-### Deployment
-
-
+Run `npm run build` when you want to deploy the project for production.
 
 ## Authors
 
-👤 **Author1**
+👤 **Asha Abdullahi**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- [Github](https://github.com/Ashah15)
+- [Twitter](https://twitter.com/AshaAbdullahi13)
+- [Linkedin](https://www.linkedin.com/in/ashaabdullahi/)
 
-👤 **Author2**
+👤 **Moin Khan**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- [Github](https://github.com/moinkhanif)
+- [Linkedin](https://www.linkedin.com/in/moinkhanif/)
+- [Portfolio](https://moinkhanif.dev)
 
 ## 🤝 Contributing
 
@@ -64,12 +60,6 @@ Feel free to check the [issues page](issues/).
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
 
 ## 📝 License
 

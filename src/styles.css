@@ -1,0 +1,280 @@
+@import "../node_modules/flatpickr/dist/flatpickr.min.css";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logo {
+  color: #b83b5e;
+  font-family: "Oleo Script", cursive;
+}
+
+.form-container,
+.project-module,
+.window-container {
+  width: 100%;
+  position: fixed;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.514);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+}
+
+#todoForm,
+#projectForm,
+.window-container .confirm-dialogue {
+  position: relative;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.priority-project-options label:first-child,
+.window-container button:first-child {
+  margin-right: 10px;
+}
+
+.window-container .confirm-dialogue-buttons {
+  text-align: center;
+}
+
+#todoForm,
+#todoForm label,
+#projectForm,
+#projectForm label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#todoForm label,
+#projectForm label {
+  padding: 10px 0;
+}
+
+#todoForm .priority-project-options {
+  display: flex;
+}
+
+.toggle > * {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: antiquewhite;
+  cursor: pointer;
+}
+
+#todoForm label > *,
+#projectForm label > * {
+  padding: 8px 15px;
+  margin-top: 10px;
+}
+
+#todoForm textarea {
+  height: 130px;
+}
+
+#todoForm label[data-item="duedate"] {
+  pointer-events: none;
+}
+
+#todoForm label[data-item="duedate"] input {
+  pointer-events: all;
+}
+
+.todoFormButtons.cta-btns button,
+.project-form-buttons.cta-btns button {
+  padding: 5px 10px;
+  background-color: rgb(255, 212, 155);
+  border-radius: 10px;
+  border: none;
+  margin: auto 10px;
+  cursor: pointer;
+}
+
+.cta-btns {
+  margin-top: 20px;
+}
+
+#content {
+  display: flex;
+  min-height: 100vh;
+}
+
+.left-container {
+  width: 30%;
+  background-color: antiquewhite;
+}
+
+.left-container,
+.right-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.left-section {
+  padding: 30px 0;
+}
+
+.left-section h2 {
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.right-container .right-info {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 80%;
+}
+
+.right-info .right-section {
+  background-color: antiquewhite;
+  min-width: 300px;
+  max-width: 500px;
+  width: 100%;
+  min-height: 400px;
+  margin: 10%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.right-section:last-child {
+  margin-left: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.projects .project {
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 200px;
+  margin: 10px 0;
+  border-radius: 10px;
+  background-color: rgb(255, 212, 155);
+}
+
+#projectToggle {
+  margin-right: 5rem;
+}
+
+.projects .project:hover,
+.projects .project[active],
+#formToggle:hover,
+#projectToggle:hover {
+  background-color: #6a2c70;
+}
+
+.projects .project h4 {
+  color: #6a2c70;
+  font-weight: 400;
+  padding-right: 10px;
+}
+
+.right-container {
+  width: 70%;
+}
+
+.d-none {
+  display: none;
+}
+
+.v-hidden {
+  visibility: hidden;
+}
+
+.todo-section-div {
+  margin: 30px auto;
+}
+
+.todo-section,
+.right-section:first-child h4 {
+  margin: 15px auto;
+  background-color: rgb(255, 212, 155);
+  padding: 10px 30px 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.right-section:first-child h4 {
+  padding: 15px 30px;
+  margin: 10px auto;
+}
+
+.projects .project:hover h4,
+.projects .project:hover span,
+.projects .project[active] h4,
+.projects .project[active] span,
+#formToggle:hover,
+#projectToggle:hover {
+  color: antiquewhite;
+}
+
+.todo-section .todo-item-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-section p:first-child {
+  margin-right: 2rem;
+}
+
+.right-section:last-child .todo-container {
+  background-color: rgb(255, 212, 155);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.right-section:last-child p {
+  padding: 5px 20px;
+}
+
+.right-section:last-child .todo-item-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right-section:last-child .todo-item-meta h4:first-child {
+  margin-right: 10px;
+}
+
+.right-section:last-child .btn.btn-primary {
+  margin-right: 10px;
+}
+
+.low-priority {
+  padding: 5px 10px;
+  background-color: #f2aef8;
+  border-radius: 10px;
+}
+
+.high-priority {
+  padding: 5px 10px;
+  background-color: #b3f8b9;
+  border-radius: 10px;
+}
+
+.medium-priority {
+  padding: 5px 10px;
+  background-color: rgb(160, 225, 255);
+  border-radius: 10px;
+}

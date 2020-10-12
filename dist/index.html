@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <title>ToDo List</title>
+  </head>
+
+  <body>
+    <div id="content">
+      <div class="left-container">
+        <h1 class="logo">ToDo List</h1>
+        <div class="left-section">
+          <nav>
+            <h2>Projects</h2>
+            <ul class="projects"></ul>
+          </nav>
+        </div>
+      </div>
+      <div class="right-container" style="background-image: url('hills.jpg');">
+        <div class="toggle">
+          <button id="projectToggle">Create New Project</button>
+          <button id="formToggle">Create New Task</button>
+        </div>
+        <div class="right-info">
+          <div class="right-section"></div>
+          <div class="right-section v-hidden"></div>
+        </div>
+      </div>
+      <div class="form-container d-none">
+        <form action="#" id="todoForm">
+          <h2>Create a new Event</h2>
+          <label>
+            Title:
+            <input id="title-id" type="text" name="title" required />
+          </label>
+          <label>
+            Description:
+            <textarea
+              id="description-id"
+              name="description"
+              cols="30"
+              rows="10"
+              required
+            ></textarea>
+          </label>
+          <label data-item="duedate">
+            Due Date/time:
+            <input
+              id="dueDate-id"
+              type="text"
+              name="date"
+              placeholder="Select Date/Time..."
+              required
+            />
+          </label>
+          <div class="priority-project-options">
+            <label>
+              Priority
+              <select name="priority" id="priority-id" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+            <label>
+              Projects:
+              <select id="project-id" name="project" required></select>
+            </label>
+          </div>
+
+          <div class="todoFormButtons cta-btns">
+            <button class="save-btn">Save</button>
+            <button class="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
